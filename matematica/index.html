@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Variación Temporal de Índices de Precipitación Extrema</title>
+  <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="css/precipitacion.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <section data-background="#6c78a9" class="portada-lluvia">
+        <div class="rain-container">
+          <div class="rain"></div>
+        </div>
+        <div class="titulo">
+          <h1>VARIACIÓN TEMPORAL DE ÍNDICES DE PRECIPITACIÓN EXTREMA EN LA CIUDAD DE LA PLATA</h1>
+          <h3>Expo 2025</h3>
+          <p><em>Matemática 4 - Franco Kumichel, Juan Volpe</em></p>
+        </div>
+      </section>
+      <!-- MOTIVACION Y OBJETIVO -->
+      <section>
+        <section>
+          <h2>Motivación</h2>
+          <div class="data-box">
+            <p>
+              En los últimos años, la ciudad de La Plata ha experimentado una mayor frecuencia de eventos de precipitación extrema,
+              los cuales generan impactos significativos en la infraestructura urbana, el transporte y la vida cotidiana.
+            </p>
+            <p>
+              Analizar la variación temporal de estos eventos permite comprender si se observan tendencias crecientes y 
+              evaluar posibles cambios en el clima local.
+            </p>
+          </div>
+        </section>
+        <section>
+          <h2>Objetivo del estudio</h2>
+          <ul>
+            <li>Analizar la variación temporal de índices de precipitación extrema en La Plata.</li>
+            <li>Determinar si existen tendencias significativas en las últimas décadas.</li>
+            <li>Explorar su relación con fenómenos meteorológicos regionales.</li>
+          </ul>
+        </section>
+      </section>
+      <!-- DATOS Y CALCULO DE INDICES -->
+      <section>
+        <section>
+          <h2>Metodología general</h2>
+          <p class="fragment fade-in">
+            Se estimaron distintos <strong>índices derivados de la precipitación diaria</strong> en la estación <strong>La Plata AERO</strong> (Buenos Aires),
+            para el período <strong>1961–2024</strong>.
+          </p>
+          <p class="fragment fade-in">
+            Los índices se analizaron a escala <span class="highlight">anual y estacional</span>, incluyendo los subperíodos de referencia
+            <strong>1961–1990</strong> y <strong>1991–2020</strong>.
+          </p>
+        </section>
+        <section>
+          <h2>Índices de precipitación (ETCCDI)</h2>
+          <p class="fragment fade-left">
+            Los índices seleccionados siguen las recomendaciones del <strong>Expert Team on Climate Change Detection and Indices (ETCCDI)</strong>,
+            evaluando intensidad, frecuencia y persistencia de la precipitación.
+          </p>
+          <table class="fragment fade-in rain-table">
+            <colgroup>
+              <col><col><col><col>
+            </colgroup>
+            <thead>
+              <tr><th>Índice</th><th>Nombre</th><th>Definición</th><th>Unidad</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>RX1day</td><td>Máx. precipitación en 1 día</td><td>Sea RRᵢⱼ la precipitación diaria en el día i del período j. Se define: RX1dayⱼ = máx(RRᵢⱼ).</td><td>mm</td></tr>
+              <tr><td>RX5day</td><td>Máx. precipitación en 5 días</td><td>Sea RRₖⱼ la precipitación acumulada en el intervalo de 5 días k del período j (k se identifica por el último día). Se define: RX5dayⱼ = máx(RRₖⱼ).</td><td>mm</td></tr>
+              <tr><td>SDII</td><td>Intensidad diaria simple</td><td>Sea RRwⱼ la precipitación diaria en los días húmedos (RR ≥ 1 mm) del período j y W el número de esos días. Se define: SDIIⱼ = Σ(RRwⱼ) / W.</td><td>mm/día</td></tr>
+              <tr><td>PRCPTOT</td><td>Precipitación total en días húmedos (≥ 1 mm)</td><td>Sea RRwⱼ la precipitación diaria en los días húmedos (RR ≥ 1 mm) del período j. Se define: PRCPTOTⱼ = Σ(RRwⱼ).</td><td>mm</td></tr>
+            </tbody>
+          </table>
+        </section>
+        <section>
+          <h2>Índices de precipitación (ETCCDI)</h2>
+          <table class="fragment fade-in rain-table">
+            <colgroup>
+              <col><col><col><col>
+            </colgroup>
+            <thead>
+              <tr><th>Índice</th><th>Nombre</th><th>Definición</th><th>Unidad</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>R10mm</td><td>Días con precipitación ≥ 10 mm</td><td>Número de días en el período j con RRᵢⱼ ≥ 10 mm.</td><td>mm</td></tr>
+              <tr><td>R20mm</td><td>Días con precipitación ≥ 20 mm</td><td>Número de días en el período j con RRᵢⱼ ≥ 20 mm.</td><td>mm</td></tr>
+              <tr><td>R95pTOT</td><td>Precipitación debida a días muy húmedos (> percentil 95)</td><td>Sea RRwⱼ la precipitación diaria en los días húmedos del período j y RRwₙ⁹⁵ el percentil 95 de la precipitación en días húmedos del período base n (p.ej., 1961–1990). Se define: R95pTOTⱼ = Σ(RRwⱼ) para RRwⱼ > RRwₙ⁹⁵.</td><td>mm</td></tr>
+              <tr><td>R99pTOT</td><td>Precipitación debida a días extremadamente húmedos (> percentil 99)</td><td>Igual que el anterior, pero usando RRwₙ⁹⁹, el percentil 99 del período base: R99pTOTⱼ = Σ(RRwⱼ) para RRwⱼ > RRwₙ⁹⁹.</td><td>mm</td></tr>
+            </tbody>
+          </table>
+        </section>
+        <section>
+          <h2>Índices de precipitación (ETCCDI)</h2>
+          <table class="fragment fade-in rain-table">
+            <colgroup>
+              <col><col><col><col>
+            </colgroup>
+            <thead>
+              <tr><th>Índice</th><th>Nombre</th><th>Definición</th><th>Unidad</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>CDW</td><td>Máxima racha de días húmedos consecutivos</td><td>Longitud máxima de la secuencia de días consecutivos en el período j con RRᵢⱼ ≥ 1 mm.</td><td>días</td></tr>
+              <tr><td>CDD</td><td>Máxima racha de días secos consecutivos</td><td>Longitud máxima de la secuencia de días consecutivos en el período j con RRᵢⱼ < 1 mm.</td><td>días</td></tr>
+            </tbody>
+          </table>
+          <p class="footnote fragment fade-in">Fuente: ETCCDI (Expert Team on Climate Change Detection and Indices)</p>
+        </section>
+      </section>
+      <!-- PARTE 1: ANALISIS DE TENDENCIAS -->
+      <section>
+        <h2>Conclusiones</h2>
+        <ul>
+          <li>Tendencia leve al aumento de días de precipitación intensa</li>
+          <li>Mayor variabilidad interanual en las últimas décadas</li>
+          <li>Necesidad de actualización continua del monitoreo</li>
+        </ul>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal.js/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      transition: 'fade',
+      slideNumber: true
+    });
+  </script>
+  <script>
+    const rainContainer = document.querySelector('.rain');
+    const droplets = 250;
+
+    for (let i = 0; i < droplets; i++) {
+      const drop = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      drop.classList.add("rain__drop");
+      drop.setAttribute("viewBox", "0 0 5 50");
+      drop.style.setProperty("--x", Math.floor(Math.random() * 100));
+      drop.style.setProperty("--y", Math.floor(Math.random() * 100));
+      drop.style.setProperty("--o", Math.random());
+      drop.style.setProperty("--a", Math.random() + 0.5);
+      drop.style.setProperty("--d", (Math.random() * 2) - 1);
+      drop.style.setProperty("--s", Math.random());
+
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", "M 2.5,0 C 2.6949458,3.5392017 3.344765,20.524571 4.4494577,30.9559 5.7551357,42.666753 4.5915685,50 2.5,50 0.40843152,50 -0.75513565,42.666753 0.55054234,30.9559 1.655235,20.524571 2.3050542,3.5392017 2.5,0 Z");
+      path.setAttribute("fill", "#a1c6cc");
+      path.setAttribute("opacity", Math.random());
+      drop.appendChild(path);
+
+      rainContainer.appendChild(drop);
+    }
+  </script>
+
+</body>
+</html>

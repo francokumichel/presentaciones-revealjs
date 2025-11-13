@@ -1,0 +1,199 @@
+/* ======================================
+   Tema Reveal.js: "Precipitación"
+   Autor: Franco Kumichel
+   Inspirado en análisis climático
+====================================== */
+
+/* Fondo general */
+.reveal {
+  background: linear-gradient(180deg, #0b1e3d 0%, #1b3c68 50%, #2c4f75 100%);
+  color: #eaf3ff;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 0.03em;
+  font-size: 32px;
+}
+
+/* Títulos */
+.reveal h1, .reveal h2, .reveal h3 {
+  color: #a8d1ff;
+  font-weight: 600;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
+  text-transform: none;
+}
+
+/* Subtítulos o textos destacados */
+.reveal h4 {
+  color: #b7dcff;
+  font-style: italic;
+}
+
+.reveal p {
+  line-height: 1.4;
+  margin: 0.5em 0;
+  font-size: 0.85em;
+}
+
+/* Enlaces */
+.reveal a {
+  color: #66c2ff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.reveal a:hover {
+  color: #a8d1ff;
+}
+
+/* Cajas destacadas (para datos o gráficos) */
+section .data-box {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 1em;
+  margin: 1em 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Listas */
+.reveal ul {
+  list-style-type: none;
+}
+
+.reveal ul li {
+  margin: 0.5em 0;
+  padding-left: 1.5em;
+  position: relative;
+}
+
+.reveal ul li::before {
+  content: "⛈️ ";
+  color: #66c2ff;
+}
+
+/* Gráficos o imágenes */
+.reveal img {
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  margin-top: 10px;
+}
+
+/* Transiciones entre slides */
+.reveal .slides section {
+  transition: background 1s ease-in-out;
+}
+
+/* ==== Portada con lluvia ==== */
+section.portada-lluvia {
+  position: relative;
+  overflow: hidden;
+  color: white;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.portada-lluvia .titulo {
+  position: relative;
+  z-index: 2;
+}
+
+.portada-lluvia .rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.rain-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.rain__drop {
+  position: absolute;
+  left: calc(var(--x) * 1%);
+  top: calc((var(--y) + 50) * -1px);
+  height: 30px;
+  animation-name: drop;
+  animation-timing-function: linear;
+  animation-duration: calc(var(--a) * 1s);
+  animation-delay: calc(var(--d) * 1s);
+  animation-iteration-count: infinite;
+}
+
+.rain__drop path {
+  fill: #a1c6cc;
+  opacity: var(--o);
+  transform: scaleY(calc(var(--s) * 1.5));
+}
+
+@keyframes drop {
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100vh);
+  }
+}
+
+.rain-table {
+  width: 95%;
+  margin: 0.5em auto;
+  border-collapse: collapse;
+  font-size: 0.70em;
+  background-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(4px);
+  border-radius: 10px;
+  overflow: hidden;
+  table-layout: auto;
+}
+
+.rain-table col:nth-child(1) {
+  width: 10%;
+}
+.rain-table col:nth-child(2) {
+  width: 15%;
+}
+.rain-table col:nth-child(3) {
+  width: 60%;
+}
+.rain-table col:nth-child(4) {
+  width: 10%;
+}
+
+.rain-table th,
+.rain-table td {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+  color: #e0e9ff;
+  word-wrap: break-word;
+}
+
+.rain-table th {
+  background: rgba(255, 255, 255, 0.15);
+  text-transform: uppercase;
+  font-size: 0.8em;
+  letter-spacing: 0.5px;
+}
+
+.rain-table tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.rain-table strong {
+  color: #a7c7ff;
+  font-weight: 700;
+}
+
+
+
+

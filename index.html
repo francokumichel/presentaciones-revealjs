@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Mis Presentaciones</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Estilos de Reveal.js -->
+  <link rel="stylesheet" href="reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="reveal.js/dist/theme/black.css" id="theme">
+  <style>
+    h1, h2, h3 { text-transform: none; }
+    a.menu-link {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      background: #1f1f1f;
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    a.menu-link:hover {
+      background: #3c3c3c;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1 -->
+      <section>
+        <h1>Presentaciones</h1>
+        <p>Seleccioná una categoría:</p>
+        <p>
+          <a href="#/matematica" class="menu-link">Matemática</a>
+          <a href="#/distribuidos" class="menu-link">Distribuidos</a>
+        </p>
+      </section>
+
+      <!-- Slide 2: Matemática -->
+      <section id="matematica">
+        <h2>Matemática</h2>
+        <p>Temas disponibles:</p>
+        <p>
+          <a href="matematica/tema1/index.html" class="menu-link">Tema 1 - Lógica proposicional</a>
+        </p>
+        <a href="#/">⬅ Volver al inicio</a>
+      </section>
+
+      <!-- Slide 3: Distribuidos -->
+      <section id="distribuidos">
+        <h2>Distribuidos</h2>
+        <p>Temas disponibles:</p>
+        <p>
+          <a href="distribuidos/sockets/index.html" class="menu-link">Sockets</a>
+        </p>
+        <a href="#/">⬅ Volver al inicio</a>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Scripts Reveal.js -->
+  <script src="reveal.js/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      transition: 'slide',
+    });
+  </script>
+</body>
+</html>
