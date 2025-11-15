@@ -3,8 +3,9 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Variación Temporal de Índices de Precipitación Extrema</title>
-
+  <title>Ensayo sobre Indices de Precipitacion Extrema</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../resources/favicon.png">
   <!-- Reveal.js CSS -->
   <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
   <link rel="stylesheet" href="../reveal.js/dist/theme/black.css" id="theme">
@@ -55,7 +56,7 @@
         </ul>
       </section>
 
-        <section>
+      <section>
         <h2>Preparación de los datos y análisis</h2>
         <div class="data-box">
           <p>📩 Datos faltantes y distribución.</p>
@@ -195,92 +196,141 @@
               </tr>
             </tbody>
           </table>
-      </section>
+        </section>
 
-      <!-- BLOQUE 3: Tendencias -->
-      <section>
-        <h3>Detección y cuantificación de tendencias</h3>
-        <div class="data-box">
-          <h4>Mann–Kendall</h4>
-          <ul>
-            <li>Evalúa existencia de tendencia</li>
-            <li>H₀: No hay tendencia (p > 0.05)</li>
-          </ul>
+        <!-- BLOQUE 3: Tendencias -->
+        <section>
+          <h3>Detección y cuantificación de tendencias</h3>
+          <div class="data-box">
+            <h4>Mann–Kendall</h4>
+            <ul>
+              <li>Evalúa existencia de tendencia</li>
+              <li>H₀: No hay tendencia (p > 0.05)</li>
+            </ul>
 
-          <h4>Theil-Sen</h4>
-          <ul>
-            <li>Pendiente robusta</li>
-            <li>Resistente a valores extremos</li>
-          </ul>
-        </div>
-      </section>
+            <h4>Theil-Sen</h4>
+            <ul>
+              <li>Pendiente robusta</li>
+              <li>Resistente a valores extremos</li>
+            </ul>
+          </div>
+        </section>
 
-      <!-- BLOQUE 4: Regresión -->
-      <section>
-        <h3>Regresión lineal múltiple</h3>
-        <p>Analizamos los factores que influyen en la variabilidad de los indicadores</p>
-        <div>
-          <!-- Fórmula en LaTeX (MathJax) -->
-          \[
-          \underbrace{Y}_{\text{Índices representativos}}
-          =
-          \beta_0
-          + \beta_1 \underbrace{X_1}_{\text{Restos de índices}}
-          + \cdots +
-          \beta_k \underbrace{X_k}_{\text{Restos de índices}}
-          + \varepsilon
-          \]
-        </div>
 
-        <div class="data-box">
-          <ul>
-            <li>Variables dep.: Rx1day, PRCPTOT, CWD.</li>
-            <li>Predictores: resto de índices.</li>
-            <li>Multicolinealidad → se mitigó empleando PCA.</li>
-          </ul>
-        </div>
-      </section>
-      <section>
-        <div class="data-box">
-          ⭐ ¿Por qué usar PCA?
-          <ul>
-            <li>En lugar de usar los índices originales, las regresiones se ajustaron con sus componentes principales.
-            </li>
-            <li>Generamos var. no coorrelacionadas, evitando sesgos y mejorando el modelo.</li>
-          </ul>
-          ⭐ Resultado
-          <ul>
-            <li>Se identifican, para cada índice de interés, las combinaciones de predictores más relevantes.</li>
-            <li>Los modelos finales son estadísticamente robustos, sin problemas de multicolinealidad y con mejor
-              capacidad explicativa.</li>
-          </ul>
-        </div>
-      </section>
-      
-      <!-- BLOQUE 4: Regresión -->
-      <section>
-        <h3>Proceso de Reg. Lineal y consideraciones</h3>
-        <div class="data-box">
-          <ol>
-            <li>Elección de var. dependiente y una posible combinación de var. explicativas</li>
-            <li>Aplicar PCA sobre las var. explicativas, variando componentes.</li>
-            <li>Ajustar el modelo utilizando los componentes principales como predictores.</li>
-            <li>Obtener el mejor modelo en base a las combinaciones y empleando cómo métricas:  
-\(\mathcal{R}\) y \(\mathcal{r}^2\)</li>
-        </ul>
-        </div>
-      </section>
-      <!-- FOOTER -->
+        <section>
+          <h3>Resultados de tendencias</h3>
 
-      <!-- BLOQUE 5: Conclusiones -->
-      <section>
-        <h2>Conclusiones</h2>
-        <ul>
-          <li>Aumento leve en eventos intensos.</li>
-          <li>Mayor variabilidad interanual reciente.</li>
-          <li>Relevancia del monitoreo continuo.</li>
-        </ul>
-      </section>
+          <div class="single-image-container">
+            <img src="../resources/Var_indices_escala_estacional.png" alt="Variación de los índices a escala estacional">
+          </div>
+
+          <p class="single-image-caption">
+            <strong>Nota:</strong> Aunque se observan tendencias de aumento en algunos índices,
+            <u>no se encontró significancia estadística</u> para respaldarlas.
+          </p>
+        </section>
+
+
+        <!-- BLOQUE 4: Regresión -->
+        <section>
+          <h3>Regresión lineal múltiple</h3>
+          <p>Analizamos los factores que influyen en la variabilidad de los indicadores</p>
+          <div>
+            <!-- Fórmula en LaTeX (MathJax) -->
+            \[
+            \underbrace{Y}_{\text{Índices representativos}}
+            =
+            \beta_0
+            + \beta_1 \underbrace{X_1}_{\text{Restos de índices}}
+            + \cdots +
+            \beta_k \underbrace{X_k}_{\text{Restos de índices}}
+            + \varepsilon
+            \]
+          </div>
+
+          <div class="data-box">
+            <ul>
+              <li>Variables dep.: Rx1day, PRCPTOT, CWD.</li>
+              <li>Predictores: resto de índices.</li>
+              <li>Multicolinealidad → se mitigó empleando PCA.</li>
+            </ul>
+          </div>
+        </section>
+        <section>
+          <div class="data-box">
+            ⭐ ¿Por qué usar PCA?
+            <ul>
+              <li>En lugar de usar los índices originales, las regresiones se ajustaron con sus componentes principales.
+              </li>
+              <li>Generamos var. no coorrelacionadas, evitando sesgos y mejorando el modelo.</li>
+            </ul>
+            ⭐ Resultado
+            <ul>
+              <li>Se identifican, para cada índice de interés, las combinaciones de predictores más relevantes.</li>
+              <li>Los modelos finales son estadísticamente robustos, sin problemas de multicolinealidad y con mejor
+                capacidad explicativa.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- BLOQUE 4: Regresión -->
+        <section>
+          <h3>Proceso aplicado de Reg. Lineal Múltiple</h3>
+          <div class="data-box">
+            <ol>
+              <li>Elección de var. dependiente y una posible combinación de var. explicativas</li>
+              <li>Aplicar PCA sobre las var. explicativas, variando componentes.</li>
+              <li>Ajustar el modelo utilizando los componentes principales como predictores.</li>
+              <li>Obtener el mejor modelo en base a las combinaciones y empleando cómo métricas:
+                \(\mathcal{R}\) y \(\mathcal{r}^2\)</li>
+              </ul>
+          </div>
+        </section>
+        <!-- FOOTER -->
+
+        <!-- BLOQUE 5: Conclusiones -->
+        <section>
+          <h2>Conclusiones</h2>
+          <ul>
+            <li>Aumento leve en eventos intensos.</li>
+            <li>Mayor variabilidad interanual reciente.</li>
+            <li>Relevancia del monitoreo continuo.</li>
+          </ul>
+        </section>
+        <section class="present">
+
+          <!-- Fondo matemático -->
+          <div class="math-background">
+            <span>∫</span><span>∞</span><span>π</span><span>∑</span><span>→</span>
+            <span>√</span><span>dx</span><span>≜</span><span>ℝ</span><span>λ</span>
+          </div>
+
+          <!-- Lluvia -->
+          <div class="rain-container">
+            <div class="rain"></div>
+          </div>
+
+          <h2 class="agr-title">✨ Agradecimientos ✨</h2>
+
+          <div class="agr-content">
+            <ul>
+              <li>A todos los oyentes y colaboradores!</li>
+              <li>Toda la cátedra de <strong>Matemática IV</strong>!</li>
+              <li>Por el espacio y la oportunidad!</li>
+            </ul>
+          </div>
+          </BR>
+          <h4 class="agr-questions">¿Preguntas o dudas? 🙂</h4>
+
+          <!-- Caja repositorio abajo izquierda -->
+          <div class="repo-box">
+            <h3>📘 Repositorio</h3>
+            <ul>
+              <li><a href="#">github.com/francokumichel/TP-Mate4</a></li>
+            </ul>
+          </div>
+
+        </section>
 
     </div> <!-- slides -->
   </div> <!-- reveal -->

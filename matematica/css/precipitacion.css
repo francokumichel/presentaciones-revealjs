@@ -193,7 +193,114 @@ section.portada-lluvia {
   color: #a7c7ff;
   font-weight: 700;
 }
+/* === HABILITAR CAPAS ABSOLUTAS COMO EN LA PORTADA === */
+.slide-gracias {
+  position: relative;
+  overflow: hidden;
+  padding: 2rem;
+  height: 100%;
+}
+
+/* === CAPA 0 - FONDO MATEMÁTICO === */
+.math-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.math-background span {
+  position: absolute;
+  font-size: 3em;
+  color: rgba(255, 255, 255, 0.68);
+  animation: float 6s infinite ease-in-out;
+}
+
+/* Ubicaciones de símbolos matemáticos */
+.math-background span:nth-child(1){ left: 8%;  top: 10%; }
+.math-background span:nth-child(2){ left: 70%; top: 15%; }
+.math-background span:nth-child(3){ left: 40%; top: 20%; }
+.math-background span:nth-child(4){ left: 15%; top: 80%; }
+.math-background span:nth-child(5){ left: 72%; top: 65%; }
+.math-background span:nth-child(6){ left: 55%; top: 95%; }
+.math-background span:nth-child(7){ left: 33%; top: 80%; }
+.math-background span:nth-child(8){ left: 85%; top: 33%; }
+.math-background span:nth-child(9){ left: 15%; top: 40%; }
+.math-background span:nth-child(10){ left: 60%; top: 18%; }
+
+@keyframes float {
+  0% { transform: translateY(0); opacity: .05; }
+  50% { transform: translateY(-20px); opacity: .15; }
+  100% { transform: translateY(0); opacity: .05; }
+}
 
 
 
+.agr-title {
+  text-align: center;
+  color: #a8d1ff;
+  font-size: 2.8em;
+  margin-bottom: 15px;
+}
 
+.agr-content h3 {
+  color: #a8d1ff;
+  margin-top: 1rem;
+}
+
+.agr-content ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.agr-questions {
+  text-align: center;
+  margin-top: 2rem;
+  color: #eaf3ff;
+}
+/* Repositorio abajo a la izquierda */
+.repo-box {
+  position: fixed;
+  bottom: 20px;
+  left: 15%;
+  text-align: left;     /* Alineación normal */
+}
+
+.repo-box h3{
+  margin: 0;
+  padding: 10;
+}
+
+/* Graficos/Stats */
+/* Contenedor para un único gráfico grande */
+.single-image-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 70vh;  /* Ocupa la pantalla sin sobrepasar el slide */
+}
+
+/* Imagen principal grande */
+.single-image-container img {
+  max-width: 90%;
+  max-height: 65vh;
+  object-fit: contain;
+}
+
+/* Leyenda o texto inferior */
+.single-image-caption {
+  margin-top: 1rem;
+  font-size: 0.8em;
+  text-align: center;
+  color: #eaf3ff;
+}
+
+/* Nota final */
+.nota {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.8em !important;
+}
