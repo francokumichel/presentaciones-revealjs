@@ -1,15 +1,23 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8">
-  <title>Variación Temporal de Índices de Precipitación Extrema</title>
+  <title>Ensayo sobre Indices de Precipitacion Extrema</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../resources/favicon.png">
+  <!-- Reveal.js CSS -->
   <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
-  <link rel="stylesheet" href="css/precipitacion.css" id="theme">
+  <link rel="stylesheet" href="../reveal.js/dist/theme/black.css" id="theme">
+
+  <!-- Tu CSS -->
+  <link rel="stylesheet" href="css/precipitacion.css">
 </head>
+
 <body>
   <div class="reveal">
     <div class="slides">
-
+      <!-- PORTADA -->
       <section data-background="#6c78a9" class="portada-lluvia">
         <div class="rain-container">
           <div class="rain"></div>
@@ -20,119 +28,362 @@
           <p><em>Matemática 4 - Franco Kumichel, Juan Volpe</em></p>
         </div>
       </section>
-      <!-- MOTIVACION Y OBJETIVO -->
+
+      <!-- Elección del tema y consideraciones podríamos encajar las ideas al principio.. web scrapper dado de baja -->
       <section>
-        <section>
-          <h2>Motivación</h2>
-          <div class="data-box">
-            <p>
-              En los últimos años, la ciudad de La Plata ha experimentado una mayor frecuencia de eventos de precipitación extrema,
-              los cuales generan impactos significativos en la infraestructura urbana, el transporte y la vida cotidiana.
-            </p>
-            <p>
-              Analizar la variación temporal de estos eventos permite comprender si se observan tendencias crecientes y 
-              evaluar posibles cambios en el clima local.
-            </p>
-          </div>
-        </section>
-        <section>
-          <h2>Objetivo del estudio</h2>
+        <h2>¿Por qué elegimos el tema?</h2>
+        <div class="data-box">
           <ul>
-            <li>Analizar la variación temporal de índices de precipitación extrema en La Plata.</li>
-            <li>Determinar si existen tendencias significativas en las últimas décadas.</li>
-            <li>Explorar su relación con fenómenos meteorológicos regionales.</li>
+            <li>Relación con múltiples factores de manera directa.</li>
+            <li>Interés en aplicación estadística por parte de ambos.</li>
+            <li>Documentación, papers e información a disposición.</li>
           </ul>
-        </section>
+        </div>
       </section>
-      <!-- DATOS Y CALCULO DE INDICES -->
+
+      <!-- MOTIVACIÓN -->
       <section>
-        <section>
-          <h2>Metodología general</h2>
-          <p class="fragment fade-in">
-            Se estimaron distintos <strong>índices derivados de la precipitación diaria</strong> en la estación <strong>La Plata AERO</strong> (Buenos Aires),
-            para el período <strong>1961–2024</strong>.
+        <h2>Motivación</h2>
+        <div class="data-box">
+          <p>
+            En los últimos años, la ciudad de La Plata ha experimentado una mayor frecuencia de eventos de precipitación
+            extrema,
+            los cuales generan impactos significativos en la infraestructura urbana, el transporte y la vida cotidiana.
           </p>
-          <p class="fragment fade-in">
-            Los índices se analizaron a escala <span class="highlight">anual y estacional</span>, incluyendo los subperíodos de referencia
-            <strong>1961–1990</strong> y <strong>1991–2020</strong>.
+          <p>
+            Analizar la variación temporal de estos eventos permite comprender si se observan tendencias crecientes y
+            evaluar posibles cambios en el clima local.
           </p>
-        </section>
-        <section>
-          <h2>Índices de precipitación (ETCCDI)</h2>
-          <p class="fragment fade-left">
-            Los índices seleccionados siguen las recomendaciones del <strong>Expert Team on Climate Change Detection and Indices (ETCCDI)</strong>,
-            evaluando intensidad, frecuencia y persistencia de la precipitación.
-          </p>
-          <table class="fragment fade-in rain-table">
-            <colgroup>
-              <col><col><col><col>
-            </colgroup>
-            <thead>
-              <tr><th>Índice</th><th>Nombre</th><th>Definición</th><th>Unidad</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>RX1day</td><td>Máx. precipitación en 1 día</td><td>Sea RRᵢⱼ la precipitación diaria en el día i del período j. Se define: RX1dayⱼ = máx(RRᵢⱼ).</td><td>mm</td></tr>
-              <tr><td>RX5day</td><td>Máx. precipitación en 5 días</td><td>Sea RRₖⱼ la precipitación acumulada en el intervalo de 5 días k del período j (k se identifica por el último día). Se define: RX5dayⱼ = máx(RRₖⱼ).</td><td>mm</td></tr>
-              <tr><td>SDII</td><td>Intensidad diaria simple</td><td>Sea RRwⱼ la precipitación diaria en los días húmedos (RR ≥ 1 mm) del período j y W el número de esos días. Se define: SDIIⱼ = Σ(RRwⱼ) / W.</td><td>mm/día</td></tr>
-              <tr><td>PRCPTOT</td><td>Precipitación total en días húmedos (≥ 1 mm)</td><td>Sea RRwⱼ la precipitación diaria en los días húmedos (RR ≥ 1 mm) del período j. Se define: PRCPTOTⱼ = Σ(RRwⱼ).</td><td>mm</td></tr>
-            </tbody>
-          </table>
-        </section>
-        <section>
-          <h2>Índices de precipitación (ETCCDI)</h2>
-          <table class="fragment fade-in rain-table">
-            <colgroup>
-              <col><col><col><col>
-            </colgroup>
-            <thead>
-              <tr><th>Índice</th><th>Nombre</th><th>Definición</th><th>Unidad</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>R10mm</td><td>Días con precipitación ≥ 10 mm</td><td>Número de días en el período j con RRᵢⱼ ≥ 10 mm.</td><td>mm</td></tr>
-              <tr><td>R20mm</td><td>Días con precipitación ≥ 20 mm</td><td>Número de días en el período j con RRᵢⱼ ≥ 20 mm.</td><td>mm</td></tr>
-              <tr><td>R95pTOT</td><td>Precipitación debida a días muy húmedos (> percentil 95)</td><td>Sea RRwⱼ la precipitación diaria en los días húmedos del período j y RRwₙ⁹⁵ el percentil 95 de la precipitación en días húmedos del período base n (p.ej., 1961–1990). Se define: R95pTOTⱼ = Σ(RRwⱼ) para RRwⱼ > RRwₙ⁹⁵.</td><td>mm</td></tr>
-              <tr><td>R99pTOT</td><td>Precipitación debida a días extremadamente húmedos (> percentil 99)</td><td>Igual que el anterior, pero usando RRwₙ⁹⁹, el percentil 99 del período base: R99pTOTⱼ = Σ(RRwⱼ) para RRwⱼ > RRwₙ⁹⁹.</td><td>mm</td></tr>
-            </tbody>
-          </table>
-        </section>
-        <section>
-          <h2>Índices de precipitación (ETCCDI)</h2>
-          <table class="fragment fade-in rain-table">
-            <colgroup>
-              <col><col><col><col>
-            </colgroup>
-            <thead>
-              <tr><th>Índice</th><th>Nombre</th><th>Definición</th><th>Unidad</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>CDW</td><td>Máxima racha de días húmedos consecutivos</td><td>Longitud máxima de la secuencia de días consecutivos en el período j con RRᵢⱼ ≥ 1 mm.</td><td>días</td></tr>
-              <tr><td>CDD</td><td>Máxima racha de días secos consecutivos</td><td>Longitud máxima de la secuencia de días consecutivos en el período j con RRᵢⱼ < 1 mm.</td><td>días</td></tr>
-            </tbody>
-          </table>
-          <p class="footnote fragment fade-in">Fuente: ETCCDI (Expert Team on Climate Change Detection and Indices)</p>
-        </section>
+        </div>
       </section>
-      <!-- PARTE 1: ANALISIS DE TENDENCIAS -->
+      <!-- BLOQUE 1: Objetivo -->
+      <section>
+        <h2>Objetivo del estudio</h2>
+        <ul>
+          <li>Analizar tendencias de precipitación extrema.</li>
+          <li>Detectar cambios significativos.</li>
+          <li>Explorar relaciones con fenómenos regionales.</li>
+        </ul>
+      </section>
+      <!-- BLOQUE 2: Proceso de análisis con los datos -->
+      <section>
+        <h2>Preparación de los datos y análisis</h2>
+        <div class="data-box">
+          <p>📩 Datos faltantes y particularidades. ¿Que decisiones tomamos?</p>
+          <p>📋 Transformación a índices de precipitación (ETCCDI).</p>
+          <p>📊 Homogeneidad y tests empleados (SNHT, Buishand y Pettitt).</p>
+          <p>📈 Cambios estructurales y puntos de quiebre.</p>
+        </div>
+      </section>
+      <!-- BLOQUE 3: Definición representativa de los índices -->
+      <section>
+        <div class="data-box">
+
+          <h4>Características representativas en los datos</h4>
+          <ul>
+            <li>Intensidad y acumulación.</li>
+            <li>Frecuencia de días húmedos y secos.</li>
+            <li>Eventos extremos (percentiles).</li>
+            <li>Persistencia de días lluviosos.</li>
+          </ul>
+        </div>
+      </section>
+      <!-- BLOQUE 4: Metodología -->
+      <section>
+        <div class="data-box">
+          <h2>Metodología general</h2>
+
+          <p>Se estimaron índices de precipitación diaria,</p> 
+          <p>(La Plata AERO, 1961–2024) evaluados en tres escalas:</p>
+          <ul>
+            <li>Anual</li>
+            <li>Estacional</li>
+            <li>Subperíodos 1961–1990 / 1991–2020</li>
+          </ul>
+        </div>
+      </section>
+
+
+      <section>
+        <h2>Índices de precipitación (ETCCDI)</h2>
+        <table class="fragment fade-in rain-table">
+          <thead>
+            <tr>
+              <th>Índice</th>
+              <th>Nombre</th>
+              <th>Definición</th>
+              <th>Unidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>RX1day</td>
+              <td>Máx. precipitación en 1 día</td>
+              <td>Máximo diario en el año</td>
+              <td>mm</td>
+            </tr>
+            <tr>
+              <td>RX5day</td>
+              <td>Máx. precipitación en 5 días</td>
+              <td>Máximo en 5 días consecutivos</td>
+              <td>mm</td>
+            </tr>
+            <tr>
+              <td>SDII</td>
+              <td>Intensidad diaria simple</td>
+              <td>Σ(RRw) / W</td>
+              <td>mm/día</td>
+            </tr>
+            <tr>
+              <td>PRCPTOT</td>
+              <td>Total anual</td>
+              <td>Σ(RRw)</td>
+              <td>mm</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Más índices (ETCCDI)</h2>
+        <table class="fragment fade-in rain-table">
+          <thead>
+            <tr>
+              <th>Índice</th>
+              <th>Nombre</th>
+              <th>Definición</th>
+              <th>Unidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>R10mm</td>
+              <td>Días ≥ 10 mm</td>
+              <td>Frecuencia de eventos intensos</td>
+              <td>días</td>
+            </tr>
+            <tr>
+              <td>R20mm</td>
+              <td>Días ≥ 20 mm</td>
+              <td>Eventos más extremos</td>
+              <td>días</td>
+            </tr>
+            <tr>
+              <td>R95pTOT</td>
+              <td>%95</td>
+              <td>Precipitación sobre percentil 95</td>
+              <td>mm</td>
+            </tr>
+            <tr>
+              <td>R99pTOT</td>
+              <td>%99</td>
+              <td>Precipitación sobre percentil 99</td>
+              <td>mm</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Persistencia</h2>
+        <table class="fragment fade-in rain-table">
+          <thead>
+            <tr>
+              <th>Índice</th>
+              <th>Nombre</th>
+              <th>Definición</th>
+              <th>Unidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CWD</td>
+              <td>Días húmedos consecutivos</td>
+              <td>RR ≥ 1 mm</td>
+              <td>días</td>
+            </tr>
+            <tr>
+              <td>CDD</td>
+              <td>Días secos consecutivos</td>
+              <td>RR < 1 mm</td>
+              <td>días</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- BLOQUE 3: Tendencias -->
+      <section>
+        <h3>Detección de Tendencias</h3>
+
+        <div class="data-box">
+          <h5>Se emplearon tests no paramétricos</h5>
+          <div class="method">
+            <h4>Mann–Kendall</h4>
+            <ul>
+              <li>Detecta si existe tendencia.</li>
+              <li>H₀: sin tendencia (p > 0.05).</li>
+              <li>H₁: Tendencia positiva/negativa</li>
+            </ul>
+          </div>
+
+          <div class="method">
+            <h4>Theil–Sen</h4>
+            <ul>
+              <li>Empleado para verificar tendencia detectada.</li>
+              <li>Alta eficiencia con muestras no tan grandes.</li>
+              <li>Robusto ante valores atípicos.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+
+      <section>
+        <h3>Resultados de tendencias</h3>
+        <!--Mapa de américa y region-->
+        <!--Slides con tablas aludiendo a los resultados obtenidos en dif. estaciones-->
+        <div class="single-image-container">
+          <img src="../resources/Var_indices_escala_estacional.png" alt="Variación de los índices a escala estacional">
+        </div>
+
+        <p class="single-image-caption">
+          <strong>Nota:</strong> Aunque se observan tendencias de aumento en algunos índices,
+          <u>no se encontró significancia estadística</u> para respaldarlas.
+        </p>
+      </section>
+
+
+      <!-- BLOQUE 4: Regresión -->
+      <section>
+        <h3>Regresión lineal múltiple</h3>
+        <p>Analizamos los factores que influyen en la variabilidad de los indicadores</p>
+        <div>
+          <!-- Fórmula en LaTeX (MathJax) -->
+          \[
+          \underbrace{Y}_{\text{Índices representativos}}
+          =
+          \beta_0
+          + \beta_1 \underbrace{X_1}_{\text{Restos de índices}}
+          + \cdots +
+          \beta_k \underbrace{X_k}_{\text{Restos de índices}}
+          + \varepsilon
+          \]
+        </div>
+
+        <div class="data-box">
+          <ul>
+            <li>Variables dep.: Rx1day, PRCPTOT, CWD.</li>
+            <li>Predictores: resto de índices.</li>
+            <li>Multicolinealidad → se mitigó empleando PCA.</li>
+          </ul>
+        </div>
+      </section>
+      <section>
+        <div class="data-box">
+          ⭐ ¿Por qué usar PCA?
+          <ul>
+            <li>En lugar de usar los índices originales, las regresiones se ajustaron con sus componentes principales.
+            </li>
+            <li>Generamos var. no coorrelacionadas, evitando sesgos y mejorando el modelo.</li>
+          </ul>
+          ⭐ Resultado
+          <ul>
+            <li>Se identifican, para cada índice de interés, las combinaciones de predictores más relevantes.</li>
+            <li>Los modelos finales son estadísticamente robustos, sin problemas de multicolinealidad y con mejor
+              capacidad explicativa.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- BLOQUE 4: Regresión Múltiple -->
+      <section>
+        <h3>Proceso aplicado de Reg. Lineal Múltiple</h3>
+        <div class="data-box">
+          <ol>
+            <li>Elección de var. dependiente y una posible combinación de var. explicativas</li>
+            <li>Aplicar PCA sobre las var. explicativas, variando componentes.</li>
+            <li>Ajustar el modelo utilizando los componentes principales como predictores.</li>
+            <li>Obtener el mejor modelo en base a las combinaciones y empleando cómo métricas:
+              \(\mathcal{R}\) y \(\mathcal{r}^2\)</li>
+            </ul>
+        </div>
+      </section>
+      <!-- FOOTER -->
+
+      <!-- BLOQUE 5: Conclusiones -->
       <section>
         <h2>Conclusiones</h2>
         <ul>
-          <li>Tendencia leve al aumento de días de precipitación intensa</li>
-          <li>Mayor variabilidad interanual en las últimas décadas</li>
-          <li>Necesidad de actualización continua del monitoreo</li>
+          <li>Aumento leve en eventos intensos.</li>
+          <li>Mayor variabilidad interanual reciente.</li>
+          <li>Relevancia del monitoreo continuo.</li>
         </ul>
       </section>
+      <section class="present">
 
-    </div>
-  </div>
+        <!-- Fondo matemático -->
+        <div class="math-background">
+          <span>∫</span><span>∞</span><span>π</span><span>∑</span><span>→</span>
+          <span>√</span><span>dx</span><span>≜</span><span>ℝ</span><span>λ</span>
+        </div>
 
-  <script src="../../../reveal.js/dist/reveal.js"></script>
+        <!-- Lluvia -->
+        <div class="rain-container">
+          <div class="rain"></div>
+        </div>
+
+        <h2 class="agr-title">✨ Agradecimientos ✨</h2>
+
+        <div class="agr-content">
+          <ul>
+            <li>A todos los oyentes y colaboradores!</li>
+            <li>Toda la cátedra de <strong>Matemática IV</strong>!</li>
+            <li>Por el espacio y la oportunidad!</li>
+          </ul>
+        </div>
+        </BR>
+        <h4 class="agr-questions">¿Preguntas o dudas? 🙂</h4>
+
+        <!-- Caja repositorio abajo izquierda -->
+        <div class="repo-box">
+          <h3>📘 Repositorio</h3>
+          <ul>
+            <li><a href="#">github.com/francokumichel/TP-Mate4</a></li>
+          </ul>
+        </div>
+
+      </section>
+
+    </div> <!-- slides -->
+  </div> <!-- reveal -->
+
+  <!-- Reveal.js JS -->
+  <script src="../reveal.js/dist/reveal.js"></script>
+  <script src="../reveal.js/plugin/markdown/markdown.js"></script>
+  <script src="../reveal.js/plugin/highlight/highlight.js"></script>
+  <script src="../reveal.js/plugin/math/math.js"></script>
+
+  <!-- Inicialización -->
   <script>
     Reveal.initialize({
       hash: true,
       transition: 'fade',
-      slideNumber: true
+      slideNumber: true,
+      mathjax2: {
+        config: 'TeX-AMS_HTML-full',
+        TeX: {
+          Macros: {
+            R: '\\mathbb{R}',
+            set: ['\\left\\{#1 \\; ; \\; #2\\right\\}', 2]
+          }
+        }
+      },
+      plugins: [RevealMarkdown, RevealHighlight, RevealMath.MathJax2]
     });
   </script>
+
+  <!-- Script lluvia -->
   <script>
     const rainContainer = document.querySelector('.rain');
     const droplets = 250;
@@ -141,15 +392,15 @@
       const drop = document.createElementNS("http://www.w3.org/2000/svg", "svg");
       drop.classList.add("rain__drop");
       drop.setAttribute("viewBox", "0 0 5 50");
-      drop.style.setProperty("--x", Math.floor(Math.random() * 100));
-      drop.style.setProperty("--y", Math.floor(Math.random() * 100));
+      drop.style.setProperty("--x", Math.random() * 100);
+      drop.style.setProperty("--y", Math.random() * 100);
       drop.style.setProperty("--o", Math.random());
       drop.style.setProperty("--a", Math.random() + 0.5);
       drop.style.setProperty("--d", (Math.random() * 2) - 1);
       drop.style.setProperty("--s", Math.random());
 
       const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-      path.setAttribute("d", "M 2.5,0 C 2.6949458,3.5392017 3.344765,20.524571 4.4494577,30.9559 5.7551357,42.666753 4.5915685,50 2.5,50 0.40843152,50 -0.75513565,42.666753 0.55054234,30.9559 1.655235,20.524571 2.3050542,3.5392017 2.5,0 Z");
+      path.setAttribute("d", "M 2.5,0 C 2.7,3.5 3.3,20.5 4.4,31 5.7,42.7 4.6,50 2.5,50 0.4,50 -0.8,42.7 0.6,31 1.7,20.5 2.3,3.5 2.5,0 Z");
       path.setAttribute("fill", "#a1c6cc");
       path.setAttribute("opacity", Math.random());
       drop.appendChild(path);
@@ -159,4 +410,5 @@
   </script>
 
 </body>
+
 </html>
