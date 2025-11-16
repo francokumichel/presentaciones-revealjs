@@ -1,0 +1,11 @@
+.reveal {
+    background: none !important;
+    background-image: url("../img/Tormenta.jpeg") !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-attachment: fixed !important;
+    background-size: cover !important;
+    color: #eaf3ff;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 0.03em;
+}
