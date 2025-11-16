@@ -89,7 +89,7 @@
         <div class="data-box">
           <h2>Metodología general</h2>
 
-          <p>Se estimaron índices de precipitación diaria,</p> 
+          <p>Se estimaron índices de precipitación diaria,</p>
           <p>(La Plata AERO, 1961–2024) evaluados en tres escalas:</p>
           <ul>
             <li>Anual</li>
@@ -216,8 +216,8 @@
           <h5>Se emplearon tests no paramétricos</h5>
           <div class="method">
             <h4>Mann–Kendall</h4>
+            <h5>Detecta si existe tendencia</h5>
             <ul>
-              <li>Detecta si existe tendencia.</li>
               <li>H₀: sin tendencia (p > 0.05).</li>
               <li>H₁: Tendencia positiva/negativa</li>
             </ul>
@@ -225,8 +225,8 @@
 
           <div class="method">
             <h4>Theil–Sen</h4>
+            <h5>Empleado para verificar tendencia detectada.</h5>
             <ul>
-              <li>Empleado para verificar tendencia detectada.</li>
               <li>Alta eficiencia con muestras no tan grandes.</li>
               <li>Robusto ante valores atípicos.</li>
             </ul>
@@ -237,19 +237,56 @@
 
       <section>
         <h3>Resultados de tendencias</h3>
-        <!--Mapa de américa y region-->
-        <!--Slides con tablas aludiendo a los resultados obtenidos en dif. estaciones-->
-        <div class="single-image-container">
-          <img src="../resources/Var_indices_escala_estacional.png" alt="Variación de los índices a escala estacional">
+        <div class="image-row">
+          <!-- Imagen 1 -->
+          <div class="image-block">
+            <p>Período de Verano</p>
+            <img src="../resources/media-verano.png" alt="Variación de los índices en verano">
+            <p class="image-caption">
+              Incremento generalizado en PRCPTOT, en los eventos extremos y disminución de secuencias húmedas, indican
+              lluvias más intensas pero no más concentradas.
+            </p>
+          </div>
+
+          <!-- Imagen 2 -->
+          <div class="image-block">
+            <p>Período de Otoño</p>
+            <img src="../resources/media-otono.png" alt="Variación de los índices en otoño">
+            <p class="image-caption">
+              Leve aumento de PRCPTOT y lluvias moderadas, las secuencias húmedas se acortan, lo que podría indicar
+              lluvias más intermitentes.
+            </p>
+          </div>
         </div>
-
-        <p class="single-image-caption">
-          <strong>Nota:</strong> Aunque se observan tendencias de aumento en algunos índices,
-          <u>no se encontró significancia estadística</u> para respaldarlas.
-        </p>
+        <br>
+        <p>Aunque se observan tendencias de aumento en algunos índices, no se encontró significancia estadística para
+          respaldarlas..</p>
       </section>
-
-
+      <section>
+        <h3>Resultados de tendencias</h3>
+        <div class="image-row">
+          <div class="image-block">
+            <p>Período de Invierno</p>
+            <img src="../resources/media-invierno.png" alt="Variación de los índices en verano">
+            <p class="image-caption">
+              Aumento de la intensidad y frecuencia de eventos extremos, el crecimiento de CWD y la baja de CDD sugieren
+              inviernos más húmedos y activos.
+            </p>
+          </div>
+          <div class="image-block">
+            <p>Período de Primavera</p>
+            <img src="../resources/media-primavera.png" alt="Variación de los índices en otoño">
+            <p class="image-caption">
+              Disminución generalizada en PRCPTOT, reducciones fuertes en R99pTOT y Rx5day,
+              manteniendo la duración de periodos secos, indicando una transición hacia primaveras más secas
+              y menos intensas.
+            </p>
+          </div>
+        </div>
+        <br>
+        <p>Aunque se observan tendencias de aumento en algunos índices, no se encontró significancia estadística para
+          respaldarlas..</p>
+      </section>
       <!-- BLOQUE 4: Regresión -->
       <section>
         <h3>Regresión lineal múltiple</h3>
@@ -305,8 +342,51 @@
             </ul>
         </div>
       </section>
-      <!-- FOOTER -->
+      <section>
+        <h3>Aplicación del modelo con 3 Componentes principales</h3>
+        <div class="image-row">
+          <div class="image-block">
+            <p>Modelado de PRCPTOT</p>
+            <img src="../resources/modelo-PRCPTOT.png" alt="Tabla del modelo de PRCPTOT predicho">
+            <p class="image-caption">
+              Se empleó R10mm, R20mm, R40mm, R95pTOT, R99pTOT y Rx1day.
+            </p>
+          </div>
+          <div class="image-block">
+            <p>Modelado de CWD</p>
+            <img src="../resources/modelo-cwd.png" alt="Tabla del modelo de PRCPTOT predicho">
+            <p class="image-caption">
+              Se empleó SDII, R20mm, R95pTOT y Rx5day.
+            </p>
+          </div>
+        </div>
+        <br>
+        <p>Notar que altos valores del coef. de determinación indican que los fenómenos pueden explicarse
+          satisfactoriamente, indicando fuertes interdependencias entre índices</p>
+      </section>
 
+            <section>
+        <h3>Análisis y visualización de resultados</h3>
+        <div class="image-row">
+          <div class="image-block">
+            <p>Valores predichos de PRCPTOT</p>
+            <img src="../resources/PREDICT_PRCPTOT.png" alt="Predicción del modelo respecto a PRCPTOT">
+            <p class="image-caption">
+              Se ajusta satisfactoriamente.
+            </p>
+          </div>
+          <div class="image-block">
+            <p>Valores predichos de CWD</p>
+            <img src="../resources/PREDICT_CWD.png" alt="Predicción del modelo respecto a CWD">
+            <p class="image-caption">
+              Baja concordancia entre lo inferido y los datos.
+            </p>
+          </div>
+        </div>
+        <br>
+        <p>Notar que altos valores del coef. de determinación indican que los fenómenos pueden explicarse
+          satisfactoriamente, indicando fuertes interdependencias entre índices</p>
+      </section>
       <!-- BLOQUE 5: Conclusiones -->
       <section>
         <h2>Conclusiones</h2>
@@ -314,6 +394,7 @@
           <li>Aumento leve en eventos intensos.</li>
           <li>Mayor variabilidad interanual reciente.</li>
           <li>Relevancia del monitoreo continuo.</li>
+          <li>El modelo sugiere buena predicción para métricas de intensidad, no así para índices de persistencia.</li>
         </ul>
       </section>
       <section class="present">
@@ -340,7 +421,6 @@
         </div>
         </BR>
         <h4 class="agr-questions">¿Preguntas o dudas? 🙂</h4>
-
         <!-- Caja repositorio abajo izquierda -->
         <div class="repo-box">
           <h3>📘 Repositorio</h3>
