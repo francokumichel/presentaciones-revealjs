@@ -1,113 +1,115 @@
-/* ======================================
-   Tema Reveal.js: "Precipitación"
+@charset "UTF-8";
+/* =============================================
+   REVEAL.JS - TEMA PERSONALIZADO "Tormenta"
    Autor: Franco Kumichel
-   Inspirado en análisis climático
-====================================== */
-
-/* Fondo general */
+   Estilo optimizado y modular (SCSS)
+============================================= */
+/* -------------------------
+   VARIABLES
+-------------------------- */
+/* Paleta base */
+/* Paleta tormenta */
+/* Tipografías */
+/* Gradiente general del tema */
+/* Gradiente tormenta portada */
+/* -------------------------
+   ESTILO GLOBAL REVEAL
+-------------------------- */
 .reveal {
   background: linear-gradient(180deg, #0b1e3d 0%, #1b3c68 50%, #2c4f75 100%);
   color: #eaf3ff;
-  font-family: 'Open Sans', sans-serif;
-  letter-spacing: 0.03em;
+  font-family: "Open Sans", sans-serif;
   font-size: 32px;
+  letter-spacing: 0.03em;
 }
-
-/* Títulos */
 .reveal h1, .reveal h2, .reveal h3 {
   color: #a8d1ff;
   font-weight: 600;
   text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
-  text-transform: none;
 }
-
-/* Subtítulos o textos destacados */
 .reveal h4 {
   color: #b7dcff;
   font-style: italic;
 }
-
 .reveal p {
-  line-height: 1.4;
-  margin: 0.5em 0;
   font-size: 0.85em;
+  line-height: 1.4;
 }
-
-/* Enlaces */
 .reveal a {
   color: #66c2ff;
-  text-decoration: none;
   transition: 0.3s;
 }
 .reveal a:hover {
   color: #a8d1ff;
 }
 
-/* Cajas destacadas (para datos o gráficos) */
-section .data-box {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  padding: 1em;
-  margin: 1em 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* Listas */
+/* -------------------------
+   LISTAS
+-------------------------- */
 .reveal ul {
-  list-style-type: none;
+  list-style: none;
 }
-
 .reveal ul li {
   margin: 0.5em 0;
   padding-left: 1.5em;
   position: relative;
 }
-
-.reveal ul li::before {
+.reveal ul li:before {
   content: "⛈️ ";
   color: #66c2ff;
+  position: absolute;
+  left: 0;
 }
 
-/* Gráficos o imágenes */
-.reveal img {
+/* -------------------------
+   TABLAS
+-------------------------- */
+.rain-table {
+  width: 95%;
+  margin: 0.5em auto;
+  border-collapse: collapse;
+  font-size: 0.7em;
+  background-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(4px);
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  margin-top: 10px;
+  overflow: hidden;
+  table-layout: auto;
+}
+.rain-table th, .rain-table td {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px 10px;
+  color: #e0e9ff;
+  vertical-align: top;
+}
+.rain-table th {
+  background: rgba(255, 255, 255, 0.15);
+  text-transform: uppercase;
+  font-size: 0.8em;
+  letter-spacing: 0.5px;
+}
+.rain-table tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+.rain-table strong {
+  color: #a8d1ff;
 }
 
-/* Transiciones entre slides */
-.reveal .slides section {
-  transition: background 1s ease-in-out;
-}
-
-/* ==== Portada con lluvia ==== */
+/* -------------------------
+   PORTADA CON ANIMACIÓN DE LLUVIA
+-------------------------- */
 section.portada-lluvia {
+  background: linear-gradient(to bottom, #05070c 0%, #0e1520 40%, #2a3442 100%);
   position: relative;
   overflow: hidden;
   color: white;
   text-align: center;
-  width: 100%;
-  height: 100vh;
+  /* Contenedor de lluvia */
 }
-
-.portada-lluvia .titulo {
+section.portada-lluvia .titulo {
   position: relative;
   z-index: 2;
 }
-
-.portada-lluvia .rain {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.rain-container {
+section.portada-lluvia .rain-container {
   position: absolute;
   inset: 0;
   overflow: hidden;
@@ -115,18 +117,15 @@ section.portada-lluvia {
   z-index: 0;
 }
 
+/* Gotas */
 .rain__drop {
   position: absolute;
   left: calc(var(--x) * 1%);
   top: calc((var(--y) + 50) * -1px);
   height: 30px;
-  animation-name: drop;
-  animation-timing-function: linear;
-  animation-duration: calc(var(--a) * 1s);
+  animation: drop calc(var(--a) * 1s) linear infinite;
   animation-delay: calc(var(--d) * 1s);
-  animation-iteration-count: infinite;
 }
-
 .rain__drop path {
   fill: #a1c6cc;
   opacity: var(--o);
@@ -142,96 +141,115 @@ section.portada-lluvia {
     transform: translateY(100vh);
   }
 }
-
-.rain-table {
-  width: 95%;
-  margin: 0.5em auto;
-  border-collapse: collapse;
-  font-size: 0.70em;
-  background-color: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(4px);
-  border-radius: 10px;
-  overflow: hidden;
-  table-layout: auto;
-}
-
-.rain-table col:nth-child(1) {
-  width: 10%;
-}
-.rain-table col:nth-child(2) {
-  width: 15%;
-}
-.rain-table col:nth-child(3) {
-  width: 60%;
-}
-.rain-table col:nth-child(4) {
-  width: 10%;
-}
-
-.rain-table th,
-.rain-table td {
+/* -------------------------
+   BLOQUES DE DATOS
+-------------------------- */
+.data-box, .method-box {
+  background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 8px 10px;
-  text-align: left;
-  vertical-align: top;
-  color: #e0e9ff;
-  word-wrap: break-word;
+  border-radius: 12px;
+  padding: 1em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.rain-table th {
-  background: rgba(255, 255, 255, 0.15);
-  text-transform: uppercase;
-  font-size: 0.8em;
-  letter-spacing: 0.5px;
+/* -------------------------
+   IMÁGENES EMPAREJADAS
+-------------------------- */
+.image-row {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 3rem;
+}
+.image-row .image-block {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.image-row .image-block .image-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  max-height: 85vh;
+}
+.image-row .image-block .image-wrapper img {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+  border-radius: 10px;
+}
+.image-row .image-block .image-caption {
+  font-size: 0.5em;
+  margin-top: 0.2rem;
+  color: #eaf3ff;
 }
 
-.rain-table tr:nth-child(even) {
-  background-color: rgba(255, 255, 255, 0.04);
-}
-
-.rain-table strong {
-  color: #a7c7ff;
-  font-weight: 700;
-}
-/* === HABILITAR CAPAS ABSOLUTAS COMO EN LA PORTADA === */
+/* -------------------------
+   SECCIÓN DE AGRADECIMIENTO
+-------------------------- */
 .slide-gracias {
   position: relative;
-  overflow: hidden;
   padding: 2rem;
-  height: 100%;
+  overflow: hidden;
+  /* Fondo matemático flotante */
 }
-
-/* === CAPA 0 - FONDO MATEMÁTICO === */
-.math-background {
+.slide-gracias .math-background {
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
 }
-
-.math-background span {
+.slide-gracias .math-background span {
   position: absolute;
   font-size: 3em;
   color: rgba(255, 255, 255, 0.68);
-  animation: float 6s infinite ease-in-out;
+  animation: float 6s ease-in-out infinite;
 }
 
-/* Ubicaciones de símbolos matemáticos */
-.math-background span:nth-child(1){ left: 8%;  top: 10%; }
-.math-background span:nth-child(2){ left: 70%; top: 15%; }
-.math-background span:nth-child(3){ left: 40%; top: 20%; }
-.math-background span:nth-child(4){ left: 15%; top: 80%; }
-.math-background span:nth-child(5){ left: 72%; top: 65%; }
-.math-background span:nth-child(6){ left: 55%; top: 95%; }
-.math-background span:nth-child(7){ left: 33%; top: 80%; }
-.math-background span:nth-child(8){ left: 85%; top: 33%; }
-.math-background span:nth-child(9){ left: 15%; top: 40%; }
-.math-background span:nth-child(10){ left: 60%; top: 18%; }
-
 @keyframes float {
-  0% { transform: translateY(0); opacity: .05; }
-  50% { transform: translateY(-20px); opacity: .15; }
-  100% { transform: translateY(0); opacity: .05; }
+  0% {
+    transform: translateY(0);
+    opacity: 0.05;
+  }
+  50% {
+    transform: translateY(-20px);
+    opacity: 0.15;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0.05;
+  }
+}
+/* -------------------------
+   REPO BOX
+-------------------------- */
+.repo-box {
+  position: absolute;
+  bottom: 20px;
+  left: 15%;
+  text-align: left;
+}
+
+/* -------------------------
+   ESTILOS MATEMÁTICOS
+-------------------------- */
+.equation {
+  font-family: "Courier New", monospace;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: inline-block;
+  margin: 8px 0;
+  color: white;
+}
+
+.key-figure {
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 4px solid #84d1ff;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-top: 10px;
 }
 
 .small {
@@ -239,102 +257,26 @@ section.portada-lluvia {
   opacity: 0.9;
 }
 
-.equation {
-  font-family: "Courier New", Courier, monospace;
-  background: rgba(255,255,255,0.02);
-  padding: 8px 12px;
-  border-radius: 8px;
-  display: inline-block;
-  margin: 8px 0;
-  color: #fff;
-}
-
-.key-figure {
-  background: rgba(255,255,255,0.03);
-  border-left: 4px solid #84d1ff;
-  padding: 10px 14px;
-  border-radius: 6px;
-  display: inline-block;
-  margin-top: 10px;
-}
-.agr-title {
-  text-align: center;
-  color: #a8d1ff;
-  font-size: 2.8em;
-  margin-bottom: 15px;
-}
-
-.agr-content h3 {
-  color: #a8d1ff;
-  margin-top: 1rem;
-}
-
-.agr-content ul {
-  list-style: none;
-  padding-left: 1rem;
-}
-
-.agr-questions {
-  text-align: center;
-  margin-top: 2rem;
-  color: #eaf3ff;
-}
-/* Repositorio abajo a la izquierda */
-.repo-box {
-  bottom: 20px;
-  left: 15%;
-  text-align: left;     /* Alineación normal */
-}
-
-
-/* Graficos/Stats */
-/* Fila de dos imágenes */
-.image-row {
+.methods-row {
   display: flex;
+  gap: 2rem;
   justify-content: center;
-  align-items: stretch; /* 🔥 Ambas columnas tendrán la misma altura */
-  gap: 3rem;
-  width: 100%;
-}
-
-/* Cada bloque */
-.image-block {
-  max-height: 100%;
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 48%;
-}
-
-/* Contenedor interno que iguala alturas */
-.image-wrapper {
-  flex: 1;               /* 🔥 Igual altura entre ambas imágenes */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-height: 85vh;      /* 🔥 Imágenes MUY grandes */
-}
-
-/* Imagen propiamente dicha */
-.image-wrapper img {
-  max-height: 100%;      /* IMPORTANTE: iguala altura con su 'pareja' */
-  width: auto;           /* Mantiene proporciones */
-  object-fit: contain;
-  border-radius: 10px;
-}
-
-/* Leyenda */
-.image-caption {
-  margin-top: 0.1rem;
-  font-size: 0.5em !important;
-  text-align: center;
-  color: #eaf3ff;
-}
-
-/* Nota final */
-.nota {
+  align-items: stretch;
   margin-top: 1.5rem;
-  text-align: center;
-  font-size: 0.8em !important;
+}
+
+.method-box {
+  width: 45%;
+  text-align: left;
+}
+.method-box h4 {
+  margin-bottom: 0.3em;
+}
+.method-box h5 {
+  margin-top: -0.3em;
+  font-size: 0.75em;
+  opacity: 0.9;
+}
+.method-box ul {
+  margin-top: 0.6em;
 }
