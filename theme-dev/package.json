@@ -1,0 +1,18 @@
+{
+  "name": "revealjs-theme-dev",
+  "version": "1.0.0",
+  "description": "Entorno local para compilar temas personalizados de Reveal.js",
+  "private": true,
+  "scripts": {
+    "build": "sass src/:../site/css/",
+    "dev": "sass --watch src/themes:site/css",
+    "serve": "serve ../site"
+  },
+  "dependencies": {
+    "reveal.js": "^5.0.4"
+  },
+  "devDependencies": {
+    "sass": "^1.75.0",
+    "serve": "^14.2.0"
+  }
+}
