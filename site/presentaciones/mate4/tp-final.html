@@ -1,0 +1,809 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <title>Ensayo sobre Indices de Precipitacion Extrema</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../resources/favicon.png">
+  <!-- Reveal.js CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/plugin/highlight/monokai.css">
+  <!-- Tu CSS -->
+  <link rel="stylesheet" href="../../css/precipitacion.css" id="theme">
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <!-- PORTADA -->
+      <section data-background-gradient="linear-gradient(to bottom, #05070c 0%, #0e1520 40%, #2a3442 100%)" class="portada">
+        <div class="titulo">
+          <h1>VARIACIÓN TEMPORAL DE ÍNDICES DE PRECIPITACIÓN EXTREMA EN LA CIUDAD DE LA PLATA</h1>
+          <h3>Expo 2025</h3>
+          <p><em>Matemática 4 - Franco Kumichel, Juan Volpe</em></p>
+        </div>
+        <div class="rain"></div>
+      </section>
+
+      <!-- Elección del tema y consideraciones podríamos encajar las ideas al principio.. web scrapper dado de baja -->
+      <section>
+        <section>
+          <h2>¿Por qué elegimos el tema?</h2>
+          <div class="data-box">
+            <ul>
+              <li>Relación con múltiples factores de manera directa.</li>
+              <li>Interés en aplicación estadística por parte de ambos.</li>
+              <li>Documentación, papers e información a disposición.</li>
+            </ul>
+          </div>
+        </section>
+        <section>
+          <h2>Motivación</h2>
+          <div class="data-box">
+            <p>
+              En los últimos años, la ciudad de La Plata ha experimentado una mayor frecuencia de eventos de precipitación
+              extrema,
+              los cuales generan impactos significativos en la infraestructura urbana, el transporte y la vida cotidiana.
+            </p>
+            <p>
+              Analizar la variación temporal de estos eventos permite comprender si se observan tendencias crecientes y
+              evaluar posibles cambios en el clima local.
+            </p>
+          </div>
+        </section>
+        <!-- BLOQUE 1: Objetivo -->
+        <section>
+          <h2>Objetivo del estudio</h2>
+          <ul>
+            <li>Analizar tendencias de precipitación extrema.</li>
+            <li>Detectar cambios significativos.</li>
+            <li>Explorar relaciones con fenómenos regionales.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- BLOQUE 2: Proceso de análisis con los datos -->
+      <!-- ==========================================================
+          SECCIÓN: Preparación de los datos y análisis
+      =========================================================== -->
+      <section>
+
+        <!-- ===========================================
+            SLIDE VERTICAL 1: Datos originales
+        ============================================ -->
+        <section>
+          <h2>Preparación de los datos</h2>
+          <div class="data-box fragment fade-in">
+            <p><strong>Serie analizada:</strong> precipitación diaria — La Plata AERO (SMN), <strong>1961–2024</strong>.</p>
+            <p>Total de registros: <strong>24.456 días</strong>.</p>
+            <p class="fragment">Se identificaron <strong>71 valores faltantes</strong> (≈0,3%).</p>
+            <p class="fragment">Los faltantes se concentran en <strong>ene/1972</strong> y <strong>mar/1983</strong>, sin patrón persistente.</p>
+            <p class="fragment"><strong>Decisión:</strong> descartar los faltantes → no afecta representatividad.</p>
+          </div>
+        </section>
+
+        <!-- ===========================================
+            SLIDE VERTICAL 2: Homogeneidad
+        ============================================ -->
+        <section>
+          <h2>Calidad de los datos y homogeneidad</h2>
+          <div class="data-box">
+            <p class="fragment">Se evaluaron rupturas estructurales para garantizar consistencia en la serie histórica.</p>
+            <p class="fragment"><strong>Pruebas aplicadas:</strong></p>
+            <ul>
+              <li class="fragment">SNHT</li>
+              <li class="fragment">Buishand</li>
+              <li class="fragment">Pettitt</li>
+            </ul>
+
+            <p class="fragment"><strong>Resultados:</strong></p>
+            <ul>
+              <li class="fragment">SNHT & Buishand → quiebre potencial en <strong>27/09/1976</strong></li>
+              <li class="fragment">Pettitt → quiebre en <strong>17/03/2006</strong></li>
+            </ul>
+
+            <p class="fragment highlight">
+              Ninguno fue estadísticamente significativo → <strong>la serie es homogénea</strong>.
+            </p>
+          </div>
+        </section>
+
+        <!-- ===========================================
+            SLIDE VERTICAL 3: Transformación a índices
+        ============================================ -->
+        <section>
+          <h2>Transformación de los datos</h2>
+          <div class="data-box">
+            <p class="fragment">Se calcularon índices derivados de precipitación diaria recomendados por <strong>ETCCDI</strong>.</p>
+            <p class="fragment">Escalas temporales empleadas:</p>
+            <ul>
+              <li class="fragment">Anual</li>
+              <li class="fragment">Estacional (DJF, MAM, JJA, SON)</li>
+              <li class="fragment">Subperíodos: <strong>1961–1990</strong> y <strong>1991–2020</strong></li>
+            </ul>
+            <p class="fragment">Los índices caracterizan intensidad, frecuencia, persistencia y extremos.</p>
+          </div>
+        </section>
+
+        <!-- ===========================================
+            SLIDE VERTICAL 4: Tablas de índices (1)
+        ============================================ -->
+        <section>
+          <h2>Índices de precipitación (ETCCDI)</h2>
+          <table class="fragment fade-in rain-table">
+            <thead>
+              <tr>
+                <th>Índice</th>
+                <th>Nombre</th>
+                <th>Definición</th>
+                <th>Unidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>RX1day</td>
+                <td>Máx. precipitación en 1 día</td>
+                <td>Máximo diario anual</td>
+                <td>mm</td>
+              </tr>
+              <tr>
+                <td>RX5day</td>
+                <td>Máx. precipitación en 5 días</td>
+                <td>Máximo en 5 días consecutivos</td>
+                <td>mm</td>
+              </tr>
+              <tr>
+                <td>SDII</td>
+                <td>Intensidad diaria simple</td>
+                <td>Σ(RRw) / W</td>
+                <td>mm/día</td>
+              </tr>
+              <tr>
+                <td>PRCPTOT</td>
+                <td>Total anual</td>
+                <td>Σ(RRw)</td>
+                <td>mm</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- ===========================================
+            SLIDE VERTICAL 5: Tablas de índices (2)
+        ============================================ -->
+        <section>
+          <h2>Más índices (ETCCDI)</h2>
+          <table class="fragment fade-in rain-table">
+            <thead>
+              <tr>
+                <th>Índice</th>
+                <th>Nombre</th>
+                <th>Definición</th>
+                <th>Unidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>R10mm</td>
+                <td>Días ≥ 10 mm</td>
+                <td>Frecuencia de eventos intensos</td>
+                <td>días</td>
+              </tr>
+              <tr>
+                <td>R20mm</td>
+                <td>Días ≥ 20 mm</td>
+                <td>Eventos extremos</td>
+                <td>días</td>
+              </tr>
+              <tr>
+                <td>R95pTOT</td>
+                <td>%95</td>
+                <td>Precipitación sobre percentil 95</td>
+                <td>mm</td>
+              </tr>
+              <tr>
+                <td>R99pTOT</td>
+                <td>%99</td>
+                <td>Precipitación sobre percentil 99</td>
+                <td>mm</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- ===========================================
+            SLIDE VERTICAL 6: Persistencia
+        ============================================ -->
+        <section>
+          <h2>Persistencia</h2>
+          <table class="fragment fade-in rain-table">
+            <thead>
+              <tr>
+                <th>Índice</th>
+                <th>Nombre</th>
+                <th>Definición</th>
+                <th>Unidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>CWD</td>
+                <td>Días húmedos consecutivos</td>
+                <td>RR ≥ 1 mm</td>
+                <td>días</td>
+              </tr>
+              <tr>
+                <td>CDD</td>
+                <td>Días secos consecutivos</td>
+                <td>RR &lt; 1 mm</td>
+                <td>días</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+      </section>
+      <!-- ========================= -->
+      <!--   SECCIÓN 3: TENDENCIAS   -->
+      <!-- ========================= -->
+
+      <section>
+
+        <!-- SLIDE 1: Introducción general -->
+        <section data-background-color="#0a0f1a">
+          <h2>Detección de Tendencias</h2>
+
+          <div class="methods-row">
+    
+            <div class="method-box">
+              <h4>Mann–Kendall</h4>
+              <h5>Detecta si existe tendencia</h5>
+              <ul>
+                <li>H₀: sin tendencia (p > 0.05).</li>
+                <li>H₁: Tendencia positiva/negativa.</li>
+              </ul>
+            </div>
+
+            <div class="method-box">
+              <h4>Theil–Sen</h4>
+              <h5>Estima la pendiente asociada a la tendencia.</h5>
+              <ul>
+                <li>Alta eficiencia con muestras pequeñas.</li>
+                <li>Robusto ante valores atípicos.</li>
+              </ul>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- SLIDE 2: Resultados anuales -->
+        <section data-background-color="#101820">
+          <h2>Resultados anuales</h2>
+
+          <table class="rain-table">
+            <thead>
+              <tr>
+                <th>Índice</th>
+                <th>1961–1990</th>
+                <th>1991–2020</th>
+                <th>Diferencia (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>RX1day</td><td>155.10</td><td>181.00</td><td>16.69</td></tr>
+              <tr><td>RX5day</td><td>203.80</td><td>230.50</td><td>13.10</td></tr>
+              <tr><td>SDII</td><td>14.56</td><td>15.22</td><td>4.58</td></tr>
+              <tr><td>R10mm</td><td>944</td><td>1003</td><td>6.25</td></tr>
+              <tr><td>R20mm</td><td>473</td><td>552</td><td>16.70</td></tr>
+              <tr><td>CDD</td><td>55</td><td>41</td><td>-25.45</td></tr>
+              <tr><td>CWD</td><td>10</td><td>7</td><td>-30.0</td></tr>
+              <tr><td>R95pTOT</td><td>6962.2</td><td>7876.3</td><td>13.12</td></tr>
+              <tr><td>R99pTOT</td><td>2209.4</td><td>1983.0</td><td>-10.24</td></tr>
+              <tr><td>PRCPTOT</td><td>29836.9</td><td>32156.1</td><td>7.77</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- SLIDE 3: Verano -->
+        <section data-background-color="#1a3d5c">
+          <h2>Verano</h2>
+
+          <table class="rain-table">
+            <thead>
+              <tr>
+                <th>Índice</th>
+                <th>1961–1990</th>
+                <th>1991–2020</th>
+                <th>Diferencia (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>PRCPTOT</td><td>8337.2</td><td>9527.1</td><td>14.27</td></tr>
+              <tr><td>SDII</td><td>15.42</td><td>16.59</td><td>7.61</td></tr>
+              <tr><td>CWD</td><td>9</td><td>6</td><td>-33.33</td></tr>
+              <tr><td>CDD</td><td>33</td><td>33</td><td>0.00</td></tr>
+              <tr><td>R10mm</td><td>268</td><td>285</td><td>6.34</td></tr>
+              <tr><td>R20mm</td><td>130</td><td>153</td><td>17.69</td></tr>
+              <tr><td>R40mm</td><td>47</td><td>63</td><td>34.04</td></tr>
+              <tr><td>R95pTOT</td><td>2168.1</td><td>3441.7</td><td>58.74</td></tr>
+              <tr><td>R99pTOT</td><td>675.5</td><td>1007.5</td><td>49.15</td></tr>
+              <tr><td>Rx1day</td><td>148.6</td><td>117.0</td><td>-21.27</td></tr>
+              <tr><td>Rx5day</td><td>182.5</td><td>230.5</td><td>26.30</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- SLIDE 4: Otoño -->
+        <section data-background-color="#5c3d1a">
+          <h2>Otoño</h2>
+
+          <table class="rain-table">
+            <thead>
+              <tr>
+                <th>Índice</th>
+                <th>1961–1990</th>
+                <th>1991–2020</th>
+                <th>Diferencia (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>PRCPTOT</td><td>7828.9</td><td>8513.5</td><td>8.74</td></tr>
+              <tr><td>SDII</td><td>15.82</td><td>16.21</td><td>2.49</td></tr>
+              <tr><td>CWD</td><td>10</td><td>7</td><td>-30.00</td></tr>
+              <tr><td>CDD</td><td>48</td><td>37</td><td>-22.92</td></tr>
+              <tr><td>R10mm</td><td>229</td><td>250</td><td>9.17</td></tr>
+              <tr><td>R20mm</td><td>118</td><td>156</td><td>32.20</td></tr>
+              <tr><td>R40mm</td><td>44</td><td>51</td><td>15.91</td></tr>
+              <tr><td>R95pTOT</td><td>2530.3</td><td>1921.7</td><td>-24.05</td></tr>
+              <tr><td>R99pTOT</td><td>845.4</td><td>630.0</td><td>-25.48</td></tr>
+              <tr><td>Rx1day</td><td>155.1</td><td>181.0</td><td>16.70</td></tr>
+              <tr><td>Rx5day</td><td>196.5</td><td>196.2</td><td>-0.15</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- SLIDE 5: Invierno -->
+        <section data-background-color="#0b1e33">
+          <h2>Invierno</h2>
+
+          <table class="rain-table">
+            <thead>
+              <tr>
+                <th>Índice</th>
+                <th>1961–1990</th>
+                <th>1991–2020</th>
+                <th>Diferencia (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>PRCPTOT</td><td>5354.0</td><td>6085.4</td><td>13.66</td></tr>
+              <tr><td>SDII</td><td>11.61</td><td>13.84</td><td>19.23</td></tr>
+              <tr><td>CWD</td><td>5</td><td>7</td><td>40.00</td></tr>
+              <tr><td>CDD</td><td>45</td><td>39</td><td>-13.33</td></tr>
+              <tr><td>R10mm</td><td>183</td><td>192</td><td>4.92</td></tr>
+              <tr><td>R20mm</td><td>77</td><td>106</td><td>37.66</td></tr>
+              <tr><td>R40mm</td><td>16</td><td>33</td><td>106.25</td></tr>
+              <tr><td>R95pTOT</td><td>582.4</td><td>1165.9</td><td>100.19</td></tr>
+              <tr><td>R99pTOT</td><td>0</td><td>166.5</td><td>—</td></tr>
+              <tr><td>Rx1day</td><td>79</td><td>84.5</td><td>6.96</td></tr>
+              <tr><td>Rx5day</td><td>134.4</td><td>159.0</td><td>18.30</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- SLIDE 6: Primavera -->
+        <section data-background-color="#46641c">
+          <h2>Primavera</h2>
+
+          <table class="rain-table">
+            <thead>
+              <tr>
+                <th>Índice</th>
+                <th>1961–1990</th>
+                <th>1991–2020</th>
+                <th>Diferencia (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>PRCPTOT</td><td>8316.8</td><td>8030.1</td><td>-3.45</td></tr>
+              <tr><td>SDII</td><td>15.05</td><td>14.02</td><td>-6.87</td></tr>
+              <tr><td>CWD</td><td>8</td><td>6</td><td>-25.00</td></tr>
+              <tr><td>CDD</td><td>33</td><td>33</td><td>0.00</td></tr>
+              <tr><td>R10mm</td><td>264</td><td>276</td><td>4.55</td></tr>
+              <tr><td>R20mm</td><td>148</td><td>137</td><td>-7.43</td></tr>
+              <tr><td>R40mm</td><td>41</td><td>36</td><td>-12.20</td></tr>
+              <tr><td>R95pTOT</td><td>1681.4</td><td>1347.0</td><td>-19.89</td></tr>
+              <tr><td>R99pTOT</td><td>688.5</td><td>179.0</td><td>-74.00</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+      </section>
+
+      <!-- BLOQUE 4: Regresión -->
+      <section>
+        <h3>Regresión lineal múltiple</h3>
+        <p>Analizamos los factores que influyen en la variabilidad de los indicadores</p>
+        <div>
+          <!-- Fórmula en LaTeX (MathJax) -->
+          \[
+          \underbrace{Y}_{\text{Índices representativos}}
+          =
+          \beta_0
+          + \beta_1 \underbrace{X_1}_{\text{Restos de índices}}
+          + \cdots +
+          \beta_k \underbrace{X_k}_{\text{Restos de índices}}
+          + \varepsilon
+          \]
+        </div>
+
+        <div class="data-box">
+          <ul>
+            <li>Variables dep.: Rx1day, PRCPTOT, CWD.</li>
+            <li>Predictores: resto de índices.</li>
+            <li>Multicolinealidad → se mitigó empleando PCA.</li>
+          </ul>
+        </div>
+      </section>
+      <section>
+        <div class="data-box">
+          ⭐ ¿Por qué usar PCA?
+          <ul>
+            <li>En lugar de usar los índices originales, las regresiones se ajustaron con sus componentes principales.
+            </li>
+            <li>Generamos var. no coorrelacionadas, evitando sesgos y mejorando el modelo.</li>
+          </ul>
+          ⭐ Resultado
+          <ul>
+            <li>Se identifican, para cada índice de interés, las combinaciones de predictores más relevantes.</li>
+            <li>Los modelos finales son estadísticamente robustos, sin problemas de multicolinealidad y con mejor
+              capacidad explicativa.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- BLOQUE 4: Regresión Múltiple -->
+      <!-- ============================= -->
+      <!-- BLOQUE 4: REGRESIÓN LINEAL MÚLTIPLE -->
+      <!-- ============================= -->
+
+      <section>
+        <h2>Regresión Lineal Múltiple</h2>
+        <p>Analizamos los factores que influyen en la variabilidad de los indicadores de precipitación.</p>
+
+        <div class="formula">
+          \[
+          \underbrace{Y}_{\text{Índice objetivo}}
+          =
+          \beta_0
+          + \beta_1 \underbrace{X_1}_{\text{Predictores}}
+          + \cdots +
+          \beta_k \underbrace{X_k}_{\text{Predictores}}
+          + \varepsilon
+          \]
+        </div>
+
+        <div class="data-box">
+          <ul>
+            <li>Variables dependientes: Rx1day, PRCPTOT, CWD.</li>
+            <li>Predictores: resto de los índices climáticos.</li>
+            <li>Multicolinealidad → mitigada mediante PCA.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h3>¿Por qué emplear PCA?</h3>
+        <div class="data-box">
+          ⭐ Ventajas
+          <ul>
+            <li>Transforma los predictores en componentes principales no correlacionados.</li>
+            <li>Reduce la multicolinealidad y mejora la robustez del modelo.</li>
+            <li>Permite identificar patrones conjuntos de variabilidad.</li>
+          </ul>
+
+          ⭐ Resultados
+          <ul>
+            <li>Cada modelo se ajustó con las combinaciones de componentes que maximizan la explicación.</li>
+            <li>Se obtuvieron modelos explicativos fuertes para eventos de intensidad.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h3>Proceso aplicado</h3>
+        <div class="data-box">
+          <ol>
+            <li>Selección del índice dependiente.</li>
+            <li>Construcción del set de predictores.</li>
+            <li>Aplicación de PCA a los predictores (probando distintas cantidades de componentes).</li>
+            <li>Ajuste del modelo con los componentes principales.</li>
+            <li>Selección final mediante métricas: \(\mathcal{R}\) y \(\mathcal{r}^2\).</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ============================= -->
+      <!-- MODELO 1 – PRCPTOT -->
+      <!-- ============================= -->
+
+      <section>
+        <section>
+          <h2>Modelo 1: PRCPTOT</h2>
+
+          <h4>Ecuación del modelo</h4>
+          <div class="formula">
+            \[
+            \text{PRCPTOT} =
+            1021.73
+            + 113.56\,PC1
+            - 53.83\,PC2
+            + 42.24\,PC3
+            \]
+            \[
+            R^2 = 0.97,\qquad r = 0.98
+            \]
+          </div>
+
+          <h4>Cargas de los Componentes Principales</h4>
+          <table class="rain-table">
+            <thead>
+              <tr>
+                <th>Variable</th><th>PC1</th><th>PC2</th><th>PC3</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>R10mm</td><td>0.385</td><td>-0.416</td><td>0.562</td></tr>
+              <tr><td>R20mm</td><td>0.429</td><td>-0.338</td><td>0.285</td></tr>
+              <tr><td>R40mm</td><td>0.444</td><td>-0.259</td><td>-0.554</td></tr>
+              <tr><td>R95pTOT</td><td>0.483</td><td>0.063</td><td>-0.469</td></tr>
+              <tr><td>R99pTOT</td><td>0.356</td><td>0.544</td><td>0.225</td></tr>
+              <tr><td>Rx1day</td><td>0.333</td><td>0.588</td><td>0.159</td></tr>
+            </tbody>
+          </table>
+
+          <h4>Interpretación</h4>
+          <p>
+            PC1 resume un patrón general de cantidad e intensidad. PC2 diferencia eventos extremos de precipitaciones moderadas. PC3 distingue eventos breves muy intensos de lluvias intensas más persistentes. El modelo explica casi toda la variabilidad de PRCPTOT, mostrando un ajuste sobresaliente.
+          </p>
+        </section>
+
+        <section>
+          <h3>Visualización del modelo PRCPTOT</h3>
+          <div class="image-row">
+            <div class="image-block">
+              <p>Modelado de PRCPTOT</p>
+              <img src="../resources/PREDICT_PRCPTOT.png" alt="Modelo PRCPTOT">
+              <p class="image-caption">
+                Ajuste altamente satisfactorio gracias a la combinación equilibrada de componentes principales.
+              </p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- ============================= -->
+      <!-- MODELO 2 – Rx1day -->
+      <!-- ============================= -->
+
+      <section>
+        <section>
+          <h2>Modelo 2: Rx1day</h2>
+
+          <h4>Ecuación del modelo</h4>
+          <div class="formula">
+            \[
+            \text{Rx1day} =
+            84.47
+            + 7.61\,PC1
+            + 18.19\,PC2
+            - 9.62\,PC3
+            \]
+            \[
+            R^2 = 0.819,\qquad r = 0.902
+            \]
+          </div>
+
+          <h4>Cargas de los Componentes Principales</h4>
+          <table class="rain-table">
+            <thead>
+              <tr>
+                <th>Variable</th><th>PC1</th><th>PC2</th><th>PC3</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>PRCPTOT</td><td>0.420</td><td>-0.243</td><td>-0.015</td></tr>
+              <tr><td>SDII</td><td>0.398</td><td>-0.003</td><td>-0.306</td></tr>
+              <tr><td>R20mm</td><td>0.376</td><td>-0.450</td><td>-0.224</td></tr>
+              <tr><td>R40mm</td><td>0.397</td><td>-0.257</td><td>0.338</td></tr>
+              <tr><td>R95pTOT</td><td>0.422</td><td>0.076</td><td>-0.012</td></tr>
+              <tr><td>R99pTOT</td><td>0.287</td><td>0.676</td><td>-0.500</td></tr>
+              <tr><td>Rx5day</td><td>0.324</td><td>0.457</td><td>0.701</td></tr>
+            </tbody>
+          </table>
+
+          <h4>Interpretación</h4>
+          <p>
+            PC1 resume intensidad general, PC2 representa extremalidad, y PC3 diferencia eventos concentrados frente a lluvias persistentes. El modelo muestra un excelente ajuste para eventos extremos diarios.
+          </p>
+        </section>
+
+        <section>
+          <h3>Visualización del modelo Rx1day</h3>
+          <div class="image-row">
+            <div class="image-block">
+              <p>Modelo Rx1day</p>
+              <img src="../resources/PREDICT_Rx1day.png" alt="Predicción Rx1day">
+              <p class="image-caption">Buena correspondencia entre predicción y datos observados.</p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- ============================= -->
+      <!-- MODELO 3 – CWD -->
+      <!-- ============================= -->
+
+      <section>
+        <section>
+          <h2>Modelo 3: CWD</h2>
+
+          <h4>Ecuación del modelo</h4>
+          <div class="formula">
+            \[
+            \text{CWD} =
+            4.75
+            + 0.16\,PC1
+            + 0.11\,PC2
+            + 1.09\,PC3
+            \]
+            \[
+            R^2 = 0.16,\qquad r = 0.36
+            \]
+          </div>
+
+          <h4>Cargas de los Componentes Principales</h4>
+          <table class="rain-table">
+            <thead>
+              <tr>
+                <th>Variable</th><th>PC1</th><th>PC2</th><th>PC3</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>SDII</td><td>0.536</td><td>-0.187</td><td>-0.422</td></tr>
+              <tr><td>R20mm</td><td>0.484</td><td>-0.563</td><td>0.658</td></tr>
+              <tr><td>R95pTOT</td><td>0.540</td><td>0.049</td><td>-0.484</td></tr>
+              <tr><td>Rx5day</td><td>0.431</td><td>0.803</td><td>0.393</td></tr>
+            </tbody>
+          </table>
+          <h4>Interpretación</h4>
+          <p>
+            CWD no es explicable por índices de intensidad, reflejando su dependencia de patrones sinópticos y estacionales. El poder explicativo es bajo (R² = 0.16).
+          </p>
+        </section>
+
+        <section>
+          <h3>Visualización del modelo CWD</h3>
+          <div class="image-row">
+            <div class="image-block">
+              <img src="../resources/PREDICT_CWD.png" alt="Predicción CWD">
+              <p class="image-caption">
+                Baja concordancia entre lo predicho y los datos observados.
+              </p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- ============================= -->
+      <!-- BLOQUE 5: Conclusiones -->
+      <!-- ============================= -->
+
+      <section>
+        <h2>Conclusiones</h2>
+        <ul>
+          <li>Aumento leve en eventos intensos.</li>
+          <li>Mayor variabilidad interanual reciente.</li>
+          <li>Relevancia del monitoreo continuo.</li>
+          <li>Los modelos predicen bien la intensidad, pero no la persistencia de la precipitación.</li>
+        </ul>
+      </section>
+
+      <section class="present">
+
+        <!-- Fondo matemático -->
+        <div class="math-background">
+          <span>∫</span><span>∞</span><span>π</span><span>∑</span><span>→</span>
+          <span>√</span><span>dx</span><span>≜</span><span>ℝ</span><span>λ</span>
+        </div>
+
+        <!-- Lluvia -->
+        <div class="rain-container">
+          <div class="rain"></div>
+        </div>
+
+        <h2 class="agr-title">✨ Agradecimientos ✨</h2>
+
+        <div class="agr-content">
+          <ul>
+            <li>A todos los oyentes y colaboradores!</li>
+            <li>Toda la cátedra de <strong>Matemática IV</strong>!</li>
+            <li>Por el espacio y la oportunidad!</li>
+          </ul>
+        </div>
+        </BR>
+        <h4 class="agr-questions">¿Preguntas o dudas? 🙂</h4>
+        <!-- Caja repositorio abajo izquierda -->
+        <div class="repo-box">
+          <h3>📘 Repositorio</h3>
+          <ul>
+            <li><a href="#">github.com/francokumichel/TP-Mate4</a></li>
+          </ul>
+        </div>
+
+      </section>
+
+    </div> <!-- slides -->
+  </div> <!-- reveal -->
+
+  <!-- Reveal.js JS -->
+  <script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+  <script src="https://unpkg.com/reveal.js/plugin/markdown/markdown.js"></script>
+  <script src="https://unpkg.com/reveal.js/plugin/highlight/highlight.js"></script>
+  <script src="https://unpkg.com/reveal.js/plugin/math/math.js"></script>
+
+  <!-- Inicialización -->
+  <script>
+    Reveal.initialize({
+      hash: true,
+      transition: 'fade',
+      slideNumber: true,
+      mathjax2: {
+        mathjax2: 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js',
+        config: 'TeX-AMS_HTML-full',
+        TeX: {
+          Macros: {
+            R: '\\mathbb{R}',
+            set: ['\\left\\{#1 \\; ; \\; #2\\right\\}', 2]
+          }
+        }
+      },
+      plugins: [RevealMarkdown, RevealHighlight, RevealMath.MathJax2]
+    });
+  </script>
+
+  <!-- Script lluvia -->
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const rainContainer = document.querySelector(".rain");
+    const droplets = 250;
+
+    for (let r = 0; r < droplets; r++) {
+      const drop = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      drop.classList.add("rain__drop");
+      drop.setAttribute("preserveAspectRatio", "xMinYMin");
+      drop.setAttribute("viewBox", "0 0 5 50");
+
+      drop.style.setProperty("--x", Math.floor(Math.random() * 100));
+      drop.style.setProperty("--y", Math.floor(Math.random() * 100));
+      drop.style.setProperty("--o", Math.random());
+      drop.style.setProperty("--a", Math.random() + 0.5);
+      drop.style.setProperty("--d", Math.random() * 2 - 1);
+      drop.style.setProperty("--s", Math.random());
+
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d",
+        "M 2.5,0 C 2.6949458,3.5392017 3.344765,20.524571 4.4494577,30.9559 5.7551357,42.666753 4.5915685,50 2.5,50 0.40843152,50 -0.75513565,42.666753 0.55054234,30.9559 1.655235,20.524571 2.3050542,3.5392017 2.5,0 Z"
+      );
+
+      drop.appendChild(path);
+      rainContainer.appendChild(drop);
+    }
+  });
+  </script>
+
+
+</body>
+
+</html>
