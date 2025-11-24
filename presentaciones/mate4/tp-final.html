@@ -40,17 +40,15 @@
         </section>
         <section>
           <h2>Motivación</h2>
-          <div class="data-box">
-            <p>
-              En los últimos años, la ciudad de La Plata ha experimentado una mayor frecuencia de eventos de precipitación
-              extrema,
-              los cuales generan impactos significativos en la infraestructura urbana, el transporte y la vida cotidiana.
-            </p>
-            <p>
-              Analizar la variación temporal de estos eventos permite comprender si se observan tendencias crecientes y
-              evaluar posibles cambios en el clima local.
-            </p>
-          </div>
+          <p>
+            En los últimos años, la ciudad de La Plata ha experimentado una mayor frecuencia de eventos de precipitación
+            extrema,
+            los cuales generan impactos significativos en la infraestructura urbana, el transporte y la vida cotidiana.
+          </p>
+          <p>
+            Analizar la variación temporal de estos eventos permite comprender si se observan tendencias crecientes y
+            evaluar posibles cambios en el clima local.
+          </p>
         </section>
         <!-- BLOQUE 1: Objetivo -->
         <section>
@@ -74,7 +72,7 @@
         ============================================ -->
         <section>
           <h2>Preparación de los datos</h2>
-          <div class="data-box fragment fade-in">
+          <div class="fragment fade-in">
             <p><strong>Serie analizada:</strong> precipitación diaria — La Plata AERO (SMN), <strong>1961–2024</strong>.</p>
             <p>Total de registros: <strong>24.456 días</strong>.</p>
             <p class="fragment">Se identificaron <strong>71 valores faltantes</strong> (≈0,3%).</p>
@@ -87,26 +85,20 @@
             SLIDE VERTICAL 2: Homogeneidad
         ============================================ -->
         <section>
-          <h2>Calidad de los datos y homogeneidad</h2>
-          <div class="data-box">
-            <p class="fragment">Se evaluaron rupturas estructurales para garantizar consistencia en la serie histórica.</p>
-            <p class="fragment"><strong>Pruebas aplicadas:</strong></p>
-            <ul>
-              <li class="fragment">SNHT</li>
-              <li class="fragment">Buishand</li>
-              <li class="fragment">Pettitt</li>
-            </ul>
+          <h2>Calidad de los datos</h2>
+          <p class="fragment">
+            Se evaluaron rupturas estructurales para garantizar consistencia en la serie histórica, 
+            aplicandose las pruebas estadísticas de homogeneidad SNHT, Buishand y Pettit.
+          </p>
+          <p class="fragment"><strong>Resultados:</strong></p>
+          <ul>
+            <li class="fragment">SNHT & Buishand → quiebre potencial en <strong>27/09/1976</strong></li>
+            <li class="fragment">Pettitt → quiebre en <strong>17/03/2006</strong></li>
+          </ul>
 
-            <p class="fragment"><strong>Resultados:</strong></p>
-            <ul>
-              <li class="fragment">SNHT & Buishand → quiebre potencial en <strong>27/09/1976</strong></li>
-              <li class="fragment">Pettitt → quiebre en <strong>17/03/2006</strong></li>
-            </ul>
-
-            <p class="fragment highlight">
-              Ninguno fue estadísticamente significativo → <strong>la serie es homogénea</strong>.
-            </p>
-          </div>
+          <p class="fragment highlight">
+            Ninguno fue estadísticamente significativo → <strong>la serie es homogénea</strong>.
+          </p>
         </section>
 
         <!-- ===========================================
@@ -254,9 +246,9 @@
         <section data-background-color="#0a0f1a">
           <h2>Detección de Tendencias</h2>
 
-          <div class="methods-row">
+          <div class="two-columns">
     
-            <div class="method-box">
+            <div class="column">
               <h4>Mann–Kendall</h4>
               <h5>Detecta si existe tendencia</h5>
               <ul>
@@ -265,7 +257,7 @@
               </ul>
             </div>
 
-            <div class="method-box">
+            <div class="column fragment fade-in">
               <h4>Theil–Sen</h4>
               <h5>Estima la pendiente asociada a la tendencia.</h5>
               <ul>
@@ -273,15 +265,15 @@
                 <li>Robusto ante valores atípicos.</li>
               </ul>
             </div>
-
           </div>
         </section>
 
         <!-- SLIDE 2: Resultados anuales -->
-        <section data-background-color="#101820">
+        <section data-background-image="https://justiciacolectiva.org.ar/wp-content/uploads/2017/02/cropped-La-Plata-de-Noche.jpg"
+        data-background-opacity="0.5">
           <h2>Resultados anuales</h2>
 
-          <table class="rain-table">
+          <table class="table-small">
             <thead>
               <tr>
                 <th>Índice</th>
@@ -306,10 +298,11 @@
         </section>
 
         <!-- SLIDE 3: Verano -->
-        <section data-background-color="#1a3d5c">
+        <section data-background-image="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjreVY5o3DbmCZHKX2ZRzmU3EydtUElXCNnmTQ6qYjmdOn1SU4bdJ4turSN4YGuhODju3wmHer5XqhYrfnf1wNzWBOfQH6j4hvWYvJ8e0Jkgrw77AB8wRL_hxL-5TTMhFAO7m5ZpGMNRl8/s1600/DSC_0007.JPG"
+        data-background-opacity="0.3">
           <h2>Verano</h2>
 
-          <table class="rain-table">
+          <table class="table-small">
             <thead>
               <tr>
                 <th>Índice</th>
@@ -335,10 +328,10 @@
         </section>
 
         <!-- SLIDE 4: Otoño -->
-        <section data-background-color="#5c3d1a">
+        <section data-background-image="https://media.0221.com.ar/p/a7aff82c9bd709250de67477ba23c4f7/adjuntos/357/imagenes/100/161/0100161528/1400x0/smart/plaza-italia-monumento-aguila2jpg.jpg" data-background-opacity="0.3">
           <h2>Otoño</h2>
 
-          <table class="rain-table">
+          <table class="table-small">
             <thead>
               <tr>
                 <th>Índice</th>
@@ -364,10 +357,11 @@
         </section>
 
         <!-- SLIDE 5: Invierno -->
-        <section data-background-color="#0b1e33">
+        <section data-background-image="https://www.infozona.com.ar/wp-content/uploads/2025/06/la-plata-nieve-heladas.jpg"
+        data-background-opacity="0.5">
           <h2>Invierno</h2>
 
-          <table class="rain-table">
+          <table class="table-small">
             <thead>
               <tr>
                 <th>Índice</th>
@@ -393,10 +387,11 @@
         </section>
 
         <!-- SLIDE 6: Primavera -->
-        <section data-background-color="#46641c">
+        <section data-background-image="https://cdn-italiani-media.italiani.it/site-laplata/sites/98/2021/09/primavera-bosque.jpg"
+        data-background-opacity="0.3">
           <h2>Primavera</h2>
 
-          <table class="rain-table">
+          <table class="table-small">
             <thead>
               <tr>
                 <th>Índice</th>
@@ -421,53 +416,9 @@
 
       </section>
 
-      <!-- BLOQUE 4: Regresión -->
-      <section>
-        <h3>Regresión lineal múltiple</h3>
-        <p>Analizamos los factores que influyen en la variabilidad de los indicadores</p>
-        <div>
-          <!-- Fórmula en LaTeX (MathJax) -->
-          \[
-          \underbrace{Y}_{\text{Índices representativos}}
-          =
-          \beta_0
-          + \beta_1 \underbrace{X_1}_{\text{Restos de índices}}
-          + \cdots +
-          \beta_k \underbrace{X_k}_{\text{Restos de índices}}
-          + \varepsilon
-          \]
-        </div>
-
-        <div class="data-box">
-          <ul>
-            <li>Variables dep.: Rx1day, PRCPTOT, CWD.</li>
-            <li>Predictores: resto de índices.</li>
-            <li>Multicolinealidad → se mitigó empleando PCA.</li>
-          </ul>
-        </div>
-      </section>
-      <section>
-        <div class="data-box">
-          ⭐ ¿Por qué usar PCA?
-          <ul>
-            <li>En lugar de usar los índices originales, las regresiones se ajustaron con sus componentes principales.
-            </li>
-            <li>Generamos var. no coorrelacionadas, evitando sesgos y mejorando el modelo.</li>
-          </ul>
-          ⭐ Resultado
-          <ul>
-            <li>Se identifican, para cada índice de interés, las combinaciones de predictores más relevantes.</li>
-            <li>Los modelos finales son estadísticamente robustos, sin problemas de multicolinealidad y con mejor
-              capacidad explicativa.</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- BLOQUE 4: Regresión Múltiple -->
       <!-- ============================= -->
       <!-- BLOQUE 4: REGRESIÓN LINEAL MÚLTIPLE -->
       <!-- ============================= -->
-
       <section>
         <h2>Regresión Lineal Múltiple</h2>
         <p>Analizamos los factores que influyen en la variabilidad de los indicadores de precipitación.</p>
@@ -484,44 +435,38 @@
           \]
         </div>
 
-        <div class="data-box">
-          <ul>
-            <li>Variables dependientes: Rx1day, PRCPTOT, CWD.</li>
-            <li>Predictores: resto de los índices climáticos.</li>
-            <li>Multicolinealidad → mitigada mediante PCA.</li>
-          </ul>
-        </div>
+        <ul>
+          <li>Variables dependientes: Rx1day, PRCPTOT, CWD.</li>
+          <li>Predictores: resto de los índices climáticos.</li>
+          <li>Multicolinealidad → mitigada mediante PCA.</li>
+        </ul>
       </section>
 
       <section>
         <h3>¿Por qué emplear PCA?</h3>
-        <div class="data-box">
-          ⭐ Ventajas
-          <ul>
-            <li>Transforma los predictores en componentes principales no correlacionados.</li>
-            <li>Reduce la multicolinealidad y mejora la robustez del modelo.</li>
-            <li>Permite identificar patrones conjuntos de variabilidad.</li>
-          </ul>
+        ⭐ Ventajas
+        <ul>
+          <li>Transforma los predictores en componentes principales no correlacionados.</li>
+          <li>Reduce la multicolinealidad y mejora la robustez del modelo.</li>
+          <li>Permite identificar patrones conjuntos de variabilidad.</li>
+        </ul>
 
-          ⭐ Resultados
-          <ul>
-            <li>Cada modelo se ajustó con las combinaciones de componentes que maximizan la explicación.</li>
-            <li>Se obtuvieron modelos explicativos fuertes para eventos de intensidad.</li>
-          </ul>
-        </div>
+        ⭐ Resultados
+        <ul>
+          <li>Cada modelo se ajustó con las combinaciones de componentes que maximizan la explicación.</li>
+          <li>Se obtuvieron modelos explicativos fuertes para eventos de intensidad.</li>
+        </ul>
       </section>
 
       <section>
         <h3>Proceso aplicado</h3>
-        <div class="data-box">
-          <ol>
-            <li>Selección del índice dependiente.</li>
-            <li>Construcción del set de predictores.</li>
-            <li>Aplicación de PCA a los predictores (probando distintas cantidades de componentes).</li>
-            <li>Ajuste del modelo con los componentes principales.</li>
-            <li>Selección final mediante métricas: \(\mathcal{R}\) y \(\mathcal{r}^2\).</li>
-          </ol>
-        </div>
+        <ol>
+          <li>Selección del índice dependiente.</li>
+          <li>Construcción del set de predictores.</li>
+          <li>Aplicación de PCA a los predictores (probando distintas cantidades de componentes).</li>
+          <li>Ajuste del modelo con los componentes principales.</li>
+          <li>Selección final mediante métricas: \(\mathcal{R}\) y \(\mathcal{r}^2\).</li>
+        </ol>
       </section>
 
       <!-- ============================= -->
@@ -531,7 +476,6 @@
       <section>
         <section>
           <h2>Modelo 1: PRCPTOT</h2>
-
           <h4>Ecuación del modelo</h4>
           <div class="formula">
             \[
@@ -541,42 +485,57 @@
             - 53.83\,PC2
             + 42.24\,PC3
             \]
-            \[
-            R^2 = 0.97,\qquad r = 0.98
-            \]
           </div>
+          <h4>Cargas de los Componentes Principales</h4>          
+          <div class="two-columns">
+            <!-- Columna izquierda -->
+            <div class="column">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Variable</th><th>PC1</th><th>PC2</th><th>PC3</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>R10mm</td><td>0.385</td><td>-0.416</td><td>0.562</td></tr>
+                  <tr><td>R20mm</td><td>0.429</td><td>-0.338</td><td>0.285</td></tr>
+                  <tr><td>R40mm</td><td>0.444</td><td>-0.259</td><td>-0.554</td></tr>
+                  <tr><td>R95pTOT</td><td>0.483</td><td>0.063</td><td>-0.469</td></tr>
+                  <tr><td>R99pTOT</td><td>0.356</td><td>0.544</td><td>0.225</td></tr>
+                  <tr><td>Rx1day</td><td>0.333</td><td>0.588</td><td>0.159</td></tr>
+                </tbody>
+              </table>
+            </div>
 
-          <h4>Cargas de los Componentes Principales</h4>
-          <table class="rain-table">
-            <thead>
-              <tr>
-                <th>Variable</th><th>PC1</th><th>PC2</th><th>PC3</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>R10mm</td><td>0.385</td><td>-0.416</td><td>0.562</td></tr>
-              <tr><td>R20mm</td><td>0.429</td><td>-0.338</td><td>0.285</td></tr>
-              <tr><td>R40mm</td><td>0.444</td><td>-0.259</td><td>-0.554</td></tr>
-              <tr><td>R95pTOT</td><td>0.483</td><td>0.063</td><td>-0.469</td></tr>
-              <tr><td>R99pTOT</td><td>0.356</td><td>0.544</td><td>0.225</td></tr>
-              <tr><td>Rx1day</td><td>0.333</td><td>0.588</td><td>0.159</td></tr>
-            </tbody>
-          </table>
-
-          <h4>Interpretación</h4>
-          <p>
-            PC1 resume un patrón general de cantidad e intensidad. PC2 diferencia eventos extremos de precipitaciones moderadas. PC3 distingue eventos breves muy intensos de lluvias intensas más persistentes. El modelo explica casi toda la variabilidad de PRCPTOT, mostrando un ajuste sobresaliente.
-          </p>
+            <!-- Columna derecha -->
+            <div class="column">
+              <p>
+                <strong>PC1</strong> resume un patrón general de cantidad e intensidad de precipitación.
+              </p>
+              <p>
+                <strong>PC2</strong> diferencia eventos extremos (R99pTOT, Rx1day) de precipitaciones moderadas (R10mm, R20mm).
+              </p>
+              <p>
+                <strong>PC3</strong> distingue eventos breves muy intensos (R10mm) de lluvias intensas más persistentes (R40mm, R95pTOT).
+              </p>
+            </div>
+          </div>
         </section>
 
         <section>
-          <h3>Visualización del modelo PRCPTOT</h3>
-          <div class="image-row">
-            <div class="image-block">
-              <p>Modelado de PRCPTOT</p>
-              <img src="../resources/PREDICT_PRCPTOT.png" alt="Modelo PRCPTOT">
+          <h2>Modelo 1: PRCPTOT</h2>
+          <div class="two-columns-asymmetric-reverse">
+            <div class="column">
+              <img src="img/modelo_PRCPTOT.png" alt="Modelo PRCPTOT">
+            </div>
+            <div class="column">
+              <div class="formula">
+                \[
+                R^2 = 0.97, r = 0.98
+                \]
+              </div>
               <p class="image-caption">
-                Ajuste altamente satisfactorio gracias a la combinación equilibrada de componentes principales.
+                Excelente ajuste del modelo PRCPTOT, reflejando la capacidad predictiva de los componentes principales seleccionados.
               </p>
             </div>
           </div>
@@ -600,42 +559,53 @@
             + 18.19\,PC2
             - 9.62\,PC3
             \]
-            \[
-            R^2 = 0.819,\qquad r = 0.902
-            \]
           </div>
-
           <h4>Cargas de los Componentes Principales</h4>
-          <table class="rain-table">
-            <thead>
-              <tr>
-                <th>Variable</th><th>PC1</th><th>PC2</th><th>PC3</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>PRCPTOT</td><td>0.420</td><td>-0.243</td><td>-0.015</td></tr>
-              <tr><td>SDII</td><td>0.398</td><td>-0.003</td><td>-0.306</td></tr>
-              <tr><td>R20mm</td><td>0.376</td><td>-0.450</td><td>-0.224</td></tr>
-              <tr><td>R40mm</td><td>0.397</td><td>-0.257</td><td>0.338</td></tr>
-              <tr><td>R95pTOT</td><td>0.422</td><td>0.076</td><td>-0.012</td></tr>
-              <tr><td>R99pTOT</td><td>0.287</td><td>0.676</td><td>-0.500</td></tr>
-              <tr><td>Rx5day</td><td>0.324</td><td>0.457</td><td>0.701</td></tr>
-            </tbody>
-          </table>
-
-          <h4>Interpretación</h4>
-          <p>
-            PC1 resume intensidad general, PC2 representa extremalidad, y PC3 diferencia eventos concentrados frente a lluvias persistentes. El modelo muestra un excelente ajuste para eventos extremos diarios.
-          </p>
+          <div class="two-columns">
+            <div class="column">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Variable</th><th>PC1</th><th>PC2</th><th>PC3</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>PRCPTOT</td><td>0.420</td><td>-0.243</td><td>-0.015</td></tr>
+                  <tr><td>SDII</td><td>0.398</td><td>-0.003</td><td>-0.306</td></tr>
+                  <tr><td>R20mm</td><td>0.376</td><td>-0.450</td><td>-0.224</td></tr>
+                  <tr><td>R40mm</td><td>0.397</td><td>-0.257</td><td>0.338</td></tr>
+                  <tr><td>R95pTOT</td><td>0.422</td><td>0.076</td><td>-0.012</td></tr>
+                  <tr><td>R99pTOT</td><td>0.287</td><td>0.676</td><td>-0.500</td></tr>
+                  <tr><td>Rx5day</td><td>0.324</td><td>0.457</td><td>0.701</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="column">
+              <p>
+                <strong>PC1</strong> refleja un eje de variación general vinculado al volumen total de precipitación y a eventos moderadamente intensos
+              </p>
+              <p>
+                <strong>PC2</strong> distingue eventos extremos (R99pTOT, Rx5day) de precipitaciones moderadas (R20mm), representando así una dimensión de extremalidad
+              </p>
+              <p>
+                <strong>PC3</strong> podría interpretarse como una diferenciación entre eventos concentrados en pocos días y lluvias de intensidad media sostenida
+              </p>
+            </div>
+          </div>
         </section>
-
         <section>
-          <h3>Visualización del modelo Rx1day</h3>
-          <div class="image-row">
-            <div class="image-block">
-              <p>Modelo Rx1day</p>
-              <img src="../resources/PREDICT_Rx1day.png" alt="Predicción Rx1day">
-              <p class="image-caption">Buena correspondencia entre predicción y datos observados.</p>
+          <h2>Visualización del modelo Rx1day</h2>
+          <div class="two-columns-asymmetric-reverse">
+            <div class="column">
+              <img src="img/modelo_Rx1day.png" alt="Predicción Rx1day">
+            </div>
+            <div class="column">
+              <div class="formula">
+                \[
+                R^2 = 0.819, r = 0.902
+                \]
+              </div>
+              <p>Buena correspondencia entre predicción y datos observados.</p>
             </div>
           </div>
         </section>
@@ -648,7 +618,6 @@
       <section>
         <section>
           <h2>Modelo 3: CWD</h2>
-
           <h4>Ecuación del modelo</h4>
           <div class="formula">
             \[
@@ -658,38 +627,51 @@
             + 0.11\,PC2
             + 1.09\,PC3
             \]
-            \[
-            R^2 = 0.16,\qquad r = 0.36
-            \]
           </div>
-
           <h4>Cargas de los Componentes Principales</h4>
-          <table class="rain-table">
-            <thead>
-              <tr>
-                <th>Variable</th><th>PC1</th><th>PC2</th><th>PC3</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>SDII</td><td>0.536</td><td>-0.187</td><td>-0.422</td></tr>
-              <tr><td>R20mm</td><td>0.484</td><td>-0.563</td><td>0.658</td></tr>
-              <tr><td>R95pTOT</td><td>0.540</td><td>0.049</td><td>-0.484</td></tr>
-              <tr><td>Rx5day</td><td>0.431</td><td>0.803</td><td>0.393</td></tr>
-            </tbody>
-          </table>
-          <h4>Interpretación</h4>
-          <p>
-            CWD no es explicable por índices de intensidad, reflejando su dependencia de patrones sinópticos y estacionales. El poder explicativo es bajo (R² = 0.16).
-          </p>
+          <div class="two-columns">
+            <div class="column">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Variable</th><th>PC1</th><th>PC2</th><th>PC3</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>SDII</td><td>0.536</td><td>-0.187</td><td>-0.422</td></tr>
+                  <tr><td>R20mm</td><td>0.484</td><td>-0.563</td><td>0.658</td></tr>
+                  <tr><td>R95pTOT</td><td>0.540</td><td>0.049</td><td>-0.484</td></tr>
+                  <tr><td>Rx5day</td><td>0.431</td><td>0.803</td><td>0.393</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="column">
+              <p>
+                <strong>PC1</strong> combina de manera positiva a todas las variables, reflejando un factor general de intensidad
+              </p>
+              <p>
+                <strong>PC2</strong> contrapone Rx5day frente a R20mm, diferenciando entre episodios extremos prolongados y lluvias intensas de corta duración
+              </p>
+              <p>
+                <strong>PC3</strong> separa R20mm (positiva) de R95pTOT y SDII (negativas), asociado a un patrón de persistencia con lluvias moderadas
+              </p>
+            </div>  
+          </div>
         </section>
-
         <section>
           <h3>Visualización del modelo CWD</h3>
-          <div class="image-row">
-            <div class="image-block">
-              <img src="../resources/PREDICT_CWD.png" alt="Predicción CWD">
-              <p class="image-caption">
-                Baja concordancia entre lo predicho y los datos observados.
+          <div class="two-columns-asymmetric-reverse">
+            <div class="column">
+              <img src="img/modelo_CWD.png" alt="Predicción CWD">
+            </div>
+            <div class="column">
+              <div class="formula">
+                \[
+                R^2 = 0.16,\qquad r = 0.36
+                \]
+              </div>
+              <p>
+                CWD no es explicable por índices de intensidad, reflejando su dependencia de patrones sinópticos y estacionales. El poder explicativo es bajo.
               </p>
             </div>
           </div>
@@ -711,18 +693,7 @@
       </section>
 
       <section class="present">
-
-        <!-- Fondo matemático -->
-        <div class="math-background">
-          <span>∫</span><span>∞</span><span>π</span><span>∑</span><span>→</span>
-          <span>√</span><span>dx</span><span>≜</span><span>ℝ</span><span>λ</span>
-        </div>
-
         <!-- Lluvia -->
-        <div class="rain-container">
-          <div class="rain"></div>
-        </div>
-
         <h2 class="agr-title">✨ Agradecimientos ✨</h2>
 
         <div class="agr-content">
@@ -756,6 +727,9 @@
   <!-- Inicialización -->
   <script>
     Reveal.initialize({
+      margin: 0,
+      minScale: 1,
+      maxScale: 1,
       hash: true,
       transition: 'fade',
       slideNumber: true,

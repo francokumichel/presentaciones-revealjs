@@ -4,9 +4,9 @@
   "description": "Entorno local para compilar temas personalizados de Reveal.js",
   "private": true,
   "scripts": {
-    "build": "sass src/:../site/css/",
-    "dev": "sass --watch src/themes:site/css",
-    "serve": "serve ../site"
+    "build": "sass src/:../css/",
+    "dev": "sass --watch src/themes:../css",
+    "serve": "serve .."
   },
   "dependencies": {
     "reveal.js": "^5.0.4"

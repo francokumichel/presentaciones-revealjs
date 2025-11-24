@@ -1,330 +1,424 @@
-/* =============================================
-   REVEAL.JS - TEMA PERSONALIZADO "Tormenta"
-   Autor: Franco Kumichel
-   Estilo optimizado y modular (SCSS)
-============================================= */
+/**
+ * Tema personalizado para presentación sobre precipitaciones extremas
+ * Investigación: VARIACIÓN TEMPORAL DE ÍNDICES DE PRECIPITACIÓN EXTREMA EN LA CIUDAD DE LA PLATA
+ */
 
-/* -------------------------
-   VARIABLES
--------------------------- */
-
-/* Paleta base */
-$blue-light:  #a8d1ff;
-$blue-soft:   #b7dcff;
-$blue-mid:    #66c2ff;
-$white-soft:  #eaf3ff;
-
-/* Paleta tormenta */
-$storm-dark-1: #05070c;
-$storm-dark-2: #0e1520;
-$storm-gray:   #2a3442;
-
-/* Tipografías */
-$font-main: "Open Sans", sans-serif;
-$font-mono: "Courier New", monospace;
-
-/* Gradiente general del tema */
-$base-gradient: linear-gradient(180deg, #0b1e3d 0%, #1b3c68 50%, #2c4f75 100%);
-
-/* Gradiente tormenta portada */
-$storm-gradient-cover: linear-gradient(
-  to bottom,
-  $storm-dark-1 0%,
-  $storm-dark-2 40%,
-  $storm-gray 100%
-);
+// 1. Include mixins
+@import "../node_modules/reveal.js/css/theme/template/mixins.scss";
 
 
-/* -------------------------
-   ESTILO GLOBAL REVEAL
--------------------------- */
+// 2. Include settings (default variables)
+@import "../node_modules/reveal.js/css/theme/template/settings.scss";
+
+// 3. Override default variables y definir tema personalizado
+// -----------------------------------------------------------------------------
+
+// Colores principales inspirados en agua, clima y análisis científico
+$backgroundColor: #0a1628;  // Azul oscuro profundo (cielo nocturno antes de tormenta)
+$mainColor: #e8f4f8;        // Azul muy claro para texto principal
+$headingColor: #5eb3d6;     // Azul agua para títulos
+
+// Colores de acento
+$accentColor: #4a9eff;      // Azul brillante (lluvia, agua)
+$secondaryAccent: #7dd3fc;  // Celeste claro (gotas de agua)
+$tertiaryAccent: #1e3a5f;   // Azul grisáceo (nubes de tormenta)
+$highlightColor: #60a5fa;   // Azul medio para resaltados
+
+// Tipografía
+$mainFont: 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$headingFont: 'Montserrat', 'Inter', 'Segoe UI', sans-serif;
+$codeFont: 'Fira Code', 'Courier New', monospace;
+
+// Tamaños de fuente
+$mainFontSize: 28px;
+$heading1Size: 2.5em;
+$heading2Size: 1.8em;
+$heading3Size: 1.4em;
+$heading4Size: 1.2em;
+
+// Estilos de texto
+$headingTextTransform: none;
+$headingFontWeight: 600;
+$linkColor: $accentColor;
+$linkColorHover: lighten($linkColor, 15%);
+$selectionBackgroundColor: rgba($accentColor, 0.7);
+
+// Fondo y diseño
+$backgroundImage: linear-gradient(135deg, #0a1628 0%, #1a2942 50%, #0f2744 100%);
+
+// Colores de elementos
+$blockQuoteBorderColor: $accentColor;
+$codeBackground: rgba($tertiaryAccent, 0.6);
+$codeColor: $secondaryAccent;
+
+// 4. Include template theme (generará el CSS final)
+@import "../node_modules/reveal.js/css/theme/template/theme.scss";
+
+// -----------------------------------------------------------------------------
+// Estilos personalizados adicionales
+// -----------------------------------------------------------------------------
+
 .reveal {
-  background: $base-gradient;
-  color: $white-soft;
-  font-family: $font-main;
-  font-size: 32px;
-  letter-spacing: 0.03em;
-
-  h1, h2, h3 {
-    color: $blue-light;
-    font-weight: 600;
-    text-shadow: 1px 1px 6px rgba(0,0,0,0.3);
-  }
-
-  h4 {
-    color: $blue-soft;
-    font-style: italic;
-  }
-
-  p {
-    font-size: 0.85em;
-    line-height: 1.4;
-  }
-
-  a {
-    color: $blue-mid;
-    transition: 0.3s;
-
-    &:hover { color: $blue-light; }
-  }
-}
-
-
-/* -------------------------
-   LISTAS
--------------------------- */
-.reveal ul {
-  list-style: none;
-
-  li {
-    margin: 0.5em 0;
-    padding-left: 1.5em;
-    position: relative;
-
-    &:before {
-      content: "⛈️ ";
-      color: $blue-mid;
-      position: absolute;
-      left: 0;
-    }
-  }
-}
-
-
-/* -------------------------
-   TABLAS
--------------------------- */
-.rain-table {
-  width: 95%;
-  margin: 0.5em auto;
-  border-collapse: collapse;
-  font-size: 0.70em;
-  background-color: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(4px);
-  border-radius: 10px;
-  overflow: hidden;
-  table-layout: auto;
-
-  th, td {
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 8px 10px;
-    color: #e0e9ff;
-    vertical-align: top;
-  }
-
-  th {
-    background: rgba(255,255,255,0.15);
-    text-transform: uppercase;
-    font-size: 0.8em;
-    letter-spacing: 0.5px;
-  }
-
-  tr:nth-child(even) {
-    background-color: rgba(255,255,255,0.04);
-  }
-
-  strong {
-    color: $blue-light;
-  }
-}
-
-
-/* -------------------------
-   PORTADA CON ANIMACIÓN DE LLUVIA
--------------------------- */
-
-section.portada-lluvia {
-  background: $storm-gradient-cover;
-  position: relative;
-  overflow: hidden;
-  color: white;
-  text-align: center;
-
-  .titulo {
-    position: relative;
-    z-index: 2;
-  }
-
-  /* Contenedor de lluvia */
-  .rain-container {
+  // Fondo con gradiente
+  background: $backgroundImage;
+  
+  // Efecto sutil de textura (opcional, simula gotas)
+  &::before {
+    content: '';
     position: absolute;
-    inset: 0;
-    overflow: hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 80%, rgba($accentColor, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba($secondaryAccent, 0.03) 0%, transparent 50%);
     pointer-events: none;
-    z-index: 0;
   }
 }
 
-/* Gotas */
-.rain__drop {
-  position: absolute;
-  left: calc(var(--x) * 1%);
-  top: calc((var(--y) + 50) * -1px);
-  height: 30px;
-  animation: drop calc(var(--a) * 1s) linear infinite;
-  animation-delay: calc(var(--d) * 1s);
+// Estilo de títulos principales
+.reveal h1 {
+  text-shadow: 0 0 20px rgba($accentColor, 0.3);
+  border-bottom: 3px solid $accentColor;
+  padding-bottom: 0.3em;
+  margin-bottom: 0.5em;
+}
 
+// Estilo de títulos secundarios
+.reveal h2 {
+  color: $headingColor;
+  border-left: 4px solid $accentColor;
+  padding-left: 0.5em;
+}
+
+// Enlaces
+.reveal a {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    text-shadow: 0 0 10px rgba($linkColor, 0.5);
+  }
+}
+
+// Listas
+.reveal ul, .reveal ol {
+  li {
+    margin-bottom: 0.5em;
+  }
+}
+
+// Código
+.reveal pre {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-left: 4px solid $accentColor;
+}
+
+// Énfasis y resaltados
+.reveal strong, .reveal b {
+  color: $secondaryAccent;
+  font-weight: 700;
+}
+
+.reveal em {
+  color: $highlightColor;
+}
+
+// Tablas
+.reveal table {
+  border-collapse: collapse;
+  
+  th {
+    background-color: rgba($accentColor, 0.2);
+    border-bottom: 2px solid $accentColor;
+  }
+  
+  td {
+    border-bottom: 1px solid rgba($mainColor, 0.1);
+  }
+}
+
+// Tablas pequeñas
+.reveal table.table-small {
+  font-size: 0.65em;
+  
+  th {
+    background-color: rgba($accentColor, 0.2);
+    border-bottom: 2px solid $accentColor;
+    padding: 0.4em 0.6em;
+    font-weight: 600;
+  }
+  
+  td {
+    border-bottom: 1px solid rgba($mainColor, 0.1);
+    padding: 0.3em 0.5em;
+  }
+  
+  // Filas alternadas para mejor lectura
+  tbody tr:nth-child(even) {
+    background-color: rgba($tertiaryAccent, 0.3);
+  }
+  
+  // Hover en filas
+  tbody tr:hover {
+    background-color: rgba($accentColor, 0.15);
+    transition: background-color 0.2s ease;
+  }
+}
+
+// Controles de navegación
+.reveal .controls {
+  color: $accentColor;
+}
+
+// Barra de progreso
+.reveal .progress {
+  background: rgba($tertiaryAccent, 0.5);
+  
+  span {
+    background: $accentColor;
+    box-shadow: 0 0 10px rgba($accentColor, 0.8);
+  }
+}
+
+.rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.rain__drop {
+  animation-delay: calc(var(--d) * 1s);
+  animation-duration: calc(var(--a) * 1s);
+  animation-iteration-count: infinite;
+  animation-name: drop;
+  animation-timing-function: linear;
+  height: 30px;
+  left: calc(var(--x) * 1%);
+  position: absolute;
+  top: calc((var(--y) + 50) * -1px);
+  
   path {
-    fill: #a1c6cc;
+    fill: rgba($secondaryAccent, 0.6);
     opacity: var(--o);
     transform: scaleY(calc(var(--s) * 1.5));
   }
 }
 
 @keyframes drop {
-  90% { opacity: 1; }
+  90% {
+    opacity: 1;
+  }
   100% {
     opacity: 0;
     transform: translateY(100vh);
   }
 }
 
-
-/* -------------------------
-   BLOQUES DE DATOS
--------------------------- */
-.data-box {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 12px;
-  padding: 1em;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-
-/* -------------------------
-   IMÁGENES EMPAREJADAS
--------------------------- */
-
-.image-row {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  gap: 3rem;
-
-  .image-block {
-    width: 48%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .image-wrapper {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      max-height: 85vh;
-
-      img {
-        max-height: 100%;
-        width: auto;
-        object-fit: contain;
-        border-radius: 10px;
-      }
-    }
-
-    .image-caption {
-      font-size: 0.5em;
-      margin-top: 0.2rem;
-      color: $white-soft;
+.reveal .two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2em;
+  align-items: start;
+  
+  .column {
+    p, table {
+      font-size: 0.7em;
     }
   }
 }
 
+// Variante con columnas asimétricas (40-60)
+.reveal .two-columns-asymmetric {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 2em;
+  align-items: start;
+}
 
-/* -------------------------
-   SECCIÓN DE AGRADECIMIENTO
--------------------------- */
+// Variante con columnas asimétricas (60-40)
+.reveal .two-columns-asymmetric-reverse {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 2em;
+  align-items: start;
 
-.slide-gracias {
-  position: relative;
-  padding: 2rem;
-  overflow: hidden;
+  .column {
+    p, table {
+      font-size: 0.7em;
+    }
+  }
+}
 
-  /* Fondo matemático flotante */
-  .math-background {
+// Ajustes para tablas dentro de columnas
+.reveal .two-columns table,
+.reveal .two-columns-asymmetric table,
+.reveal .two-columns-asymmetric-reverse table {
+  font-size: 0.7em;
+  width: 100%;
+  
+  th, td {
+    padding: 0.3em 0.4em;
+  }
+}
+
+// Responsive: en pantallas pequeñas volver a una columna
+@media (max-width: 768px) {
+  .reveal .two-columns,
+  .reveal .two-columns-asymmetric,
+  .reveal .two-columns-asymmetric-reverse {
+    grid-template-columns: 1fr;
+    gap: 1em;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Imágenes de fondo con overlay para legibilidad
+// -----------------------------------------------------------------------------
+
+// Slide con imagen de fondo y overlay oscuro
+.reveal .slides section.bg-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  // Overlay oscuro semitransparente
+  &::before {
+    content: '';
     position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-
-    span {
-      position: absolute;
-      font-size: 3em;
-      color: rgba(255, 255, 255, 0.68);
-      animation: float 6s ease-in-out infinite;
-    }
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($backgroundColor, 0.75);
+    z-index: -1;
+  }
+  
+  // Asegurar que el contenido esté por encima
+  > * {
+    position: relative;
+    z-index: 1;
   }
 }
 
-@keyframes float {
-  0%   { transform: translateY(0); opacity: .05; }
-  50%  { transform: translateY(-20px); opacity: .15; }
-  100% { transform: translateY(0); opacity: .05; }
-}
-
-/* -------------------------
-   REPO BOX
--------------------------- */
-
-.repo-box {
-  position: absolute;
-  bottom: 20px;
-  left: 15%;
-  text-align: left;
-}
-
-
-/* -------------------------
-   ESTILOS MATEMÁTICOS
--------------------------- */
-
-.equation {
-  font-family: $font-mono;
-  background: rgba(255,255,255,0.02);
-  padding: 8px 12px;
-  border-radius: 8px;
-  display: inline-block;
-  margin: 8px 0;
-  color: white;
-}
-
-.key-figure {
-  background: rgba(255,255,255,0.03);
-  border-left: 4px solid #84d1ff;
-  padding: 10px 14px;
-  border-radius: 6px;
-  margin-top: 10px;
-}
-
-.small {
-  font-size: 0.85em;
-  opacity: 0.9;
-}
-
-.methods-row {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  align-items: stretch;
-  margin-top: 1.5rem;
-}
-
-.method-box {
-  @extend .data-box;    // usa el estilo que ya tenés
-  width: 45%;
-  text-align: left;
-
-  h4 {
-    margin-bottom: 0.3em;
+// Variante con blur (desenfoque) en vez de overlay oscuro
+.reveal .slides section.bg-image-blur {
+  position: relative;
+  overflow: hidden;
+  
+  // Imagen de fondo desenfocada
+  &::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: inherit;
+    filter: blur(8px);
+    z-index: -2;
   }
-
-  h5 {
-    margin-top: -0.3em;
-    font-size: 0.75em;
-    opacity: 0.9;
+  
+  // Overlay adicional para mejorar contraste
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($backgroundColor, 0.5);
+    z-index: -1;
   }
-
-  ul {
-    margin-top: 0.6em;
+  
+  > * {
+    position: relative;
+    z-index: 1;
   }
+}
+
+// Overlay claro (para imágenes oscuras)
+.reveal .slides section.bg-image-light {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: -1;
+  }
+  
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+  
+  // Ajustar colores de texto para fondo claro
+  h1, h2, h3, h4, h5, h6, p, li {
+    color: #1a2942;
+    text-shadow: none;
+  }
+  
+  h1 {
+    color: #0a1628;
+    border-bottom-color: $accentColor;
+  }
+  
+  h2 {
+    color: #1e3a5f;
+  }
+}
+
+// Overlay con gradiente (oscuro abajo, transparente arriba)
+.reveal .slides section.bg-image-gradient {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba($backgroundColor, 0.3) 0%,
+      rgba($backgroundColor, 0.85) 100%
+    );
+    z-index: -1;
+  }
+  
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// Intensidades de overlay personalizables
+.reveal .slides section.overlay-light::before {
+  background-color: rgba($backgroundColor, 0.5) !important;
+}
+
+.reveal .slides section.overlay-medium::before {
+  background-color: rgba($backgroundColor, 0.75) !important;
+}
+
+.reveal .slides section.overlay-dark::before {
+  background-color: rgba($backgroundColor, 0.9) !important;
 }
