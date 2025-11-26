@@ -21,7 +21,7 @@
   --r-heading-text-shadow: none;
   --r-heading-font-weight: 600;
   --r-heading1-text-shadow: none;
-  --r-heading1-size: 2.5em;
+  --r-heading1-size: 2em;
   --r-heading2-size: 1.8em;
   --r-heading3-size: 1.4em;
   --r-heading4-size: 1.2em;
@@ -375,8 +375,14 @@
 
 .reveal h2 {
   color: #5eb3d6;
-  border-left: 4px solid #4a9eff;
-  padding-left: 0.5em;
+}
+
+.reveal h1.dark,
+.reveal h2.dark,
+.reveal h3.dark,
+.reveal h4.dark,
+.reveal h5.dark {
+  color: #0a1628;
 }
 
 .reveal a {
@@ -436,6 +442,84 @@
   transition: background-color 0.2s ease;
 }
 
+.reveal table.table-glass {
+  backdrop-filter: blur(1px);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(74, 158, 255, 0.3);
+}
+.reveal table.table-glass th {
+  background-color: rgba(10, 22, 40, 0.8);
+  border-bottom: 2px solid rgba(10, 22, 40, 0.4);
+  font-weight: 600;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+}
+.reveal table.table-glass td {
+  background-color: rgba(10, 22, 40, 0.5);
+  border-bottom: 1px solid rgba(232, 244, 248, 0.12);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  font-weight: 500;
+}
+.reveal table.table-glass tbody tr:nth-child(even) td {
+  background-color: rgba(30, 58, 95, 0.35);
+}
+.reveal table.table-glass tbody tr:hover td {
+  background-color: rgba(74, 158, 255, 0.2);
+  transition: background-color 0.2s ease;
+}
+
+.reveal tr.fragment.highlight-row td {
+  transition: all 0.3s ease;
+}
+
+.reveal tr.fragment.highlight-row.visible td,
+.reveal table tbody tr.fragment.highlight-row.visible td,
+.reveal table.table-glass tbody tr.fragment.highlight-row.visible td,
+.reveal table.table-glass tbody tr.fragment.highlight-row.visible:nth-child(even) td,
+.reveal table.table-glass tbody tr.fragment.highlight-row.visible:nth-child(odd) td {
+  background-color: rgba(74, 158, 255, 0.5) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.reveal tr.fragment.highlight-decrease.visible td,
+.reveal table tbody tr.fragment.highlight-decrease.visible td,
+.reveal table.table-glass tbody tr.fragment.highlight-decrease.visible td,
+.reveal table.table-glass tbody tr.fragment.highlight-decrease.visible:nth-child(even) td,
+.reveal table.table-glass tbody tr.fragment.highlight-decrease.visible:nth-child(odd) td {
+  background-color: rgba(239, 68, 68, 0.5) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.reveal .text-box-glass {
+  background-color: rgba(10, 22, 40, 0.4);
+  backdrop-filter: blur(1px);
+  border-radius: 8px;
+  padding: 1em 1.5em;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(74, 158, 255, 0.3);
+}
+.reveal .text-box-glass p {
+  margin: 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/*
+.reveal tr.fragment.highlight-row.visible {
+  td {
+    background-color: rgba($backgroundColor, 0.8) !important;
+    font-weight: 600;
+    transform: scale(1.02);
+    border-bottom: 1px solid rgba($accentColor, 0.8) !important;
+  }
+}
+
+.reveal table.table-glass tbody tr.fragment.highlight-row.visible:nth-child(even) td {
+  background-color: rgba($accentColor, 0.6) !important;
+}
+*/
 .reveal .controls {
   color: #4a9eff;
 }
@@ -533,121 +617,6 @@
     grid-template-columns: 1fr;
     gap: 1em;
   }
-}
-.reveal .slides section.bg-image {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.reveal .slides section.bg-image::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(10, 22, 40, 0.75);
-  z-index: -1;
-}
-.reveal .slides section.bg-image > * {
-  position: relative;
-  z-index: 1;
-}
-
-.reveal .slides section.bg-image-blur {
-  position: relative;
-  overflow: hidden;
-}
-.reveal .slides section.bg-image-blur::before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: inherit;
-  filter: blur(8px);
-  z-index: -2;
-}
-.reveal .slides section.bg-image-blur::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(10, 22, 40, 0.5);
-  z-index: -1;
-}
-.reveal .slides section.bg-image-blur > * {
-  position: relative;
-  z-index: 1;
-}
-
-.reveal .slides section.bg-image-light {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.reveal .slides section.bg-image-light::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(255, 255, 255, 0.85);
-  z-index: -1;
-}
-.reveal .slides section.bg-image-light > * {
-  position: relative;
-  z-index: 1;
-}
-.reveal .slides section.bg-image-light h1, .reveal .slides section.bg-image-light h2, .reveal .slides section.bg-image-light h3, .reveal .slides section.bg-image-light h4, .reveal .slides section.bg-image-light h5, .reveal .slides section.bg-image-light h6, .reveal .slides section.bg-image-light p, .reveal .slides section.bg-image-light li {
-  color: #1a2942;
-  text-shadow: none;
-}
-.reveal .slides section.bg-image-light h1 {
-  color: #0a1628;
-  border-bottom-color: #4a9eff;
-}
-.reveal .slides section.bg-image-light h2 {
-  color: #1e3a5f;
-}
-
-.reveal .slides section.bg-image-gradient {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.reveal .slides section.bg-image-gradient::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to bottom, rgba(10, 22, 40, 0.3) 0%, rgba(10, 22, 40, 0.85) 100%);
-  z-index: -1;
-}
-.reveal .slides section.bg-image-gradient > * {
-  position: relative;
-  z-index: 1;
-}
-
-.reveal .slides section.overlay-light::before {
-  background-color: rgba(10, 22, 40, 0.5) !important;
-}
-
-.reveal .slides section.overlay-medium::before {
-  background-color: rgba(10, 22, 40, 0.75) !important;
-}
-
-.reveal .slides section.overlay-dark::before {
-  background-color: rgba(10, 22, 40, 0.9) !important;
 }
 
 /*# sourceMappingURL=precipitacion.css.map */

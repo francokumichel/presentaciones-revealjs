@@ -31,7 +31,7 @@ $codeFont: 'Fira Code', 'Courier New', monospace;
 
 // Tamaños de fuente
 $mainFontSize: 28px;
-$heading1Size: 2.5em;
+$heading1Size: 2.0em;
 $heading2Size: 1.8em;
 $heading3Size: 1.4em;
 $heading4Size: 1.2em;
@@ -88,8 +88,14 @@ $codeColor: $secondaryAccent;
 // Estilo de títulos secundarios
 .reveal h2 {
   color: $headingColor;
-  border-left: 4px solid $accentColor;
-  padding-left: 0.5em;
+}
+
+.reveal h1.dark,
+.reveal h2.dark,
+.reveal h3.dark,
+.reveal h4.dark,
+.reveal h5.dark {
+  color: $backgroundColor;
 }
 
 // Enlaces
@@ -166,6 +172,92 @@ $codeColor: $secondaryAccent;
   }
 }
 
+.reveal table.table-glass {
+  backdrop-filter: blur(1px);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba($accentColor, 0.3);
+  
+  th {
+    background-color: rgba($backgroundColor, 0.8);
+    border-bottom: 2px solid rgba($backgroundColor, 0.4);
+    font-weight: 600;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+  }
+  
+  td {
+    background-color: rgba($backgroundColor, 0.5);
+    border-bottom: 1px solid rgba($mainColor, 0.12);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    font-weight: 500;
+  }
+  
+  tbody tr:nth-child(even) td {
+    background-color: rgba($tertiaryAccent, 0.35);
+  }
+  
+  tbody tr:hover td {
+    background-color: rgba($accentColor, 0.2);
+    transition: background-color 0.2s ease;
+  }
+}
+
+.reveal tr.fragment.highlight-row {
+  td {
+    transition: all 0.3s ease;
+  }
+}
+
+.reveal tr.fragment.highlight-row.visible td,
+.reveal table tbody tr.fragment.highlight-row.visible td,
+.reveal table.table-glass tbody tr.fragment.highlight-row.visible td,
+.reveal table.table-glass tbody tr.fragment.highlight-row.visible:nth-child(even) td,
+.reveal table.table-glass tbody tr.fragment.highlight-row.visible:nth-child(odd) td {
+  background-color: rgba($accentColor, 0.5) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  //border-bottom: 1px solid rgba($accentColor, 0.8) !important;
+}
+
+.reveal tr.fragment.highlight-decrease.visible td,
+.reveal table tbody tr.fragment.highlight-decrease.visible td,
+.reveal table.table-glass tbody tr.fragment.highlight-decrease.visible td,
+.reveal table.table-glass tbody tr.fragment.highlight-decrease.visible:nth-child(even) td,
+.reveal table.table-glass tbody tr.fragment.highlight-decrease.visible:nth-child(odd) td {
+  background-color: rgba(239, 68, 68, 0.5) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.reveal .text-box-glass {
+  background-color: rgba($backgroundColor, 0.4);
+  backdrop-filter: blur(1px);
+  border-radius: 8px;
+  padding: 1em 1.5em;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba($accentColor, 0.3);
+  
+  p {
+    margin: 0;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/*
+.reveal tr.fragment.highlight-row.visible {
+  td {
+    background-color: rgba($backgroundColor, 0.8) !important;
+    font-weight: 600;
+    transform: scale(1.02);
+    border-bottom: 1px solid rgba($accentColor, 0.8) !important;
+  }
+}
+
+.reveal table.table-glass tbody tr.fragment.highlight-row.visible:nth-child(even) td {
+  background-color: rgba($accentColor, 0.6) !important;
+}
+*/
 // Controles de navegación
 .reveal .controls {
   color: $accentColor;
@@ -277,148 +369,4 @@ $codeColor: $secondaryAccent;
   }
 }
 
-// -----------------------------------------------------------------------------
-// Imágenes de fondo con overlay para legibilidad
-// -----------------------------------------------------------------------------
 
-// Slide con imagen de fondo y overlay oscuro
-.reveal .slides section.bg-image {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  
-  // Overlay oscuro semitransparente
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba($backgroundColor, 0.75);
-    z-index: -1;
-  }
-  
-  // Asegurar que el contenido esté por encima
-  > * {
-    position: relative;
-    z-index: 1;
-  }
-}
-
-// Variante con blur (desenfoque) en vez de overlay oscuro
-.reveal .slides section.bg-image-blur {
-  position: relative;
-  overflow: hidden;
-  
-  // Imagen de fondo desenfocada
-  &::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: inherit;
-    filter: blur(8px);
-    z-index: -2;
-  }
-  
-  // Overlay adicional para mejorar contraste
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba($backgroundColor, 0.5);
-    z-index: -1;
-  }
-  
-  > * {
-    position: relative;
-    z-index: 1;
-  }
-}
-
-// Overlay claro (para imágenes oscuras)
-.reveal .slides section.bg-image-light {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(255, 255, 255, 0.85);
-    z-index: -1;
-  }
-  
-  > * {
-    position: relative;
-    z-index: 1;
-  }
-  
-  // Ajustar colores de texto para fondo claro
-  h1, h2, h3, h4, h5, h6, p, li {
-    color: #1a2942;
-    text-shadow: none;
-  }
-  
-  h1 {
-    color: #0a1628;
-    border-bottom-color: $accentColor;
-  }
-  
-  h2 {
-    color: #1e3a5f;
-  }
-}
-
-// Overlay con gradiente (oscuro abajo, transparente arriba)
-.reveal .slides section.bg-image-gradient {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba($backgroundColor, 0.3) 0%,
-      rgba($backgroundColor, 0.85) 100%
-    );
-    z-index: -1;
-  }
-  
-  > * {
-    position: relative;
-    z-index: 1;
-  }
-}
-
-// Intensidades de overlay personalizables
-.reveal .slides section.overlay-light::before {
-  background-color: rgba($backgroundColor, 0.5) !important;
-}
-
-.reveal .slides section.overlay-medium::before {
-  background-color: rgba($backgroundColor, 0.75) !important;
-}
-
-.reveal .slides section.overlay-dark::before {
-  background-color: rgba($backgroundColor, 0.9) !important;
-}
