@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Probabilidad - Resumen para Parcial</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/night.css" id="theme">
+
+    <style>
+        h2, h3 { margin-bottom: 20px; }
+        .tip {
+            padding: 10px 15px;
+            background: rgba(255,255,255,0.08);
+            border-left: 4px solid #42affa;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+    <!-- ===================================================================== -->
+    <!-- ========================== PORTADA ================================== -->
+    <!-- ===================================================================== -->
+    <section>
+        <h1>Resumen de Probabilidad</h1>
+        <h3>Guía para resolver ejercicios tipo parcial</h3>
+        <p>Variables aleatorias · Distribuciones · Técnicas · Tips</p>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- ==================== SECCIÓN 1: PROBABILIDAD BÁSICA ================= -->
+    <!-- ===================================================================== -->
+    <section>
+        <section>
+            <h2>Probabilidad Básica</h2>
+            <p>Eventos · Unión · Intersección · Complemento</p>
+        </section>
+
+        <section>
+            <h3>Fórmulas esenciales</h3>
+            \[
+            P(A \cup B)=P(A)+P(B)-P(A\cap B)
+            \]
+            \[
+            P(A^c)=1-P(A)
+            \]
+            \[
+            P(A\cap B)=P(A)P(B|A)
+            \]
+        </section>
+
+        <section>
+            <h3>Tips</h3>
+            <div class="tip">Dibujar un diagrama de Venn simplifica el 90% de los problemas.</div>
+            <div class="tip">Si un enunciado dice “¿afecta?”, se refiere a independencia.</div>
+        </section>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- ========== SECCIÓN 2: CONDICIONAL E INDEPENDENCIA =================== -->
+    <!-- ===================================================================== -->
+    <section>
+        <section>
+            <h2>Probabilidad Condicional</h2>
+        </section>
+
+        <section>
+            <h3>Definición</h3>
+            \[
+            P(A|B)=\frac{P(A\cap B)}{P(B)}
+            \]
+        </section>
+
+        <section>
+            <h3>Ley de Probabilidad Total</h3>
+            \[
+            P(B) = P(B|A1)P(A1)+···+P(B|An)P(An) \\
+            = \sum_{i}^{n} P(B|Ai)P(Ai)
+            \]
+            donde \(A1, A2, ..., An\) son eventos mutuamente excluyentes que cubren todo el espacio muestral.
+        </section>
+
+        <section>
+            <h3>Independencia</h3>
+            \[
+            A \text{ y } B \text{ independientes } \iff P(A\cap B)=P(A)P(B)
+            \]
+            <div class="tip">También puede verificarse viendo si \(P(A|B)=P(A)\).</div>
+        </section>
+
+        <section>
+            <h3>Teorema de Bayes</h3>
+            \[
+            P(A_k|B) = \frac{P(B|A_k)P(A_k)}{\sum_{i=1}^{n} P(B|A_i)P(A_i)}
+            \]  
+        </section>
+        <section>
+            <h3>¿Cuando usar Bayes?</h3>
+            <ul>
+                <li>Cuando se conoce \(P(B|A_i)\) y se quiere encontrar \(P(A_i|B)\).</li>
+                <li>Cuando hay particiones del espacio muestral.</li>
+                <li>Cuando hay información previa (prior) y se actualiza con nueva evidencia.</li>
+            </ul>
+        </section>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- ================= SECCIÓN 3: DISTRIBUCIONES DISCRETAS =============== -->
+    <!-- ===================================================================== -->
+    <section>
+        <section>
+            <h2>Distribuciones Discretas</h2>
+        </section>
+        <section>
+            Sea \(X\) una v.a. discreta y \(\mathcal{V}_X\) su conjunto de valores. Se define la función de frecuencia
+            de probabilidad (o simplemente función de frecuencia) de \(X\) como:
+            \[
+            f(x) = P(X = x),\quad x \in \mathcal{V}_X
+            \]
+
+            debe cumplir las siguientes propiedades:
+            \[
+            f(x) \ge 0,\quad \sum_{x \in \mathcal{V}_X} f(x) = 1
+            \]
+        </section>
+        <section>
+            <h3>Binomial</h3>
+            \[
+            X\sim Bin(n,p)
+            \]
+            \[
+            P(X=k)=\binom{n}{k}p^k(1-p)^{n-k}
+            \]
+            \[
+            E(X)=np,\quad Var(X)=np(1-p)
+            \]
+        </section>
+        <section>
+            <h3>¿Cuando uso Binomial?</h3>
+            <ul>
+                <li>Cuando hay un número fijo de ensayos \(n\).</li>
+                <li>Cada ensayo tiene dos resultados posibles: éxito o fracaso.</li>
+                <li>La probabilidad de éxito \(p\) es constante en cada ensayo.</li>
+                <li>Los ensayos son independientes entre sí.</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Poisson</h3>
+            \[
+            X\sim Poi(\lambda)
+            \]
+            \[
+            P(X=k)=e^{-\lambda}\frac{\lambda^k}{k!}
+            \]
+            \[
+            E(X)=Var(X)=\lambda
+            \]
+            <div class="tip">Eventos raros en intervalos → Poisson.</div>
+        </section>
+        <section>
+            <h3>¿Cuando uso Poisson?</h3>
+            <ul>
+                <li>Cuando se cuentan eventos que ocurren de forma aleatoria en un intervalo de tiempo o espacio.</li>
+                <li>Los eventos son independientes entre sí.</li>
+                <li>La tasa promedio de ocurrencia \(\lambda\) es constante.</li>
+                <li>El número de eventos en intervalos disjuntos es independiente.</li>
+            </ul>
+        </section>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- ================= SECCIÓN 4: DISTRIBUCIONES CONTINUAS =============== -->
+    <!-- ===================================================================== -->
+    <section>
+        <section>
+            <h2>Distribuciones Continuas</h2>
+        </section>
+
+        <section>
+            <h3>Uniforme</h3>
+            \[
+            f(x)=\frac{1}{b-a}
+            \]
+            \[
+            E(X)=\frac{a+b}{2},\quad Var(X)=\frac{(b-a)^2}{12}
+            \]
+        </section>
+
+        <section>
+            <h3>Exponencial</h3>
+            \[
+            f(t)=\lambda e^{-\lambda t}
+            \]
+            \[
+            P(T>t)=e^{-\lambda t}
+            \]
+            <div class="tip">Propiedad sin memoria: \(P(T>s+t|T>s)=P(T>t)\)</div>
+        </section>
+
+        <section>
+            <h3>Densidades personalizadas</h3>
+            <p>Ejemplo general:</p>
+            \[
+            f(x)=ax+b
+            \]
+            <div class="tip">Recordá verificar que el área total sea 1.</div>
+        </section>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- ======================== SECCIÓN 5: NORMAL =========================== -->
+    <!-- ===================================================================== -->
+    <section>
+        <section>
+            <h2>Distribución Normal</h2>
+        </section>
+
+        <section>
+            <h3>Tipificación</h3>
+            \[
+            Z = \frac{X-\mu}{\sigma}
+            \]
+            <div class="tip">Usar tabla Z para probabilidades.</div>
+        </section>
+
+        <section>
+            <h3>Comparación de dos normales</h3>
+            \[
+            Y-X \sim N(\mu_Y-\mu_X,\ \sigma_Y^2+\sigma_X^2)
+            \]
+        </section>
+
+        <section>
+            <h3>Percentiles</h3>
+            \[
+            P(X\le x)=p \implies x=\mu+z_p\sigma
+            \]
+        </section>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- ===================== SECCIÓN 6: TCL / MEDIAS ======================= -->
+    <!-- ===================================================================== -->
+    <section>
+        <section>
+            <h2>Teorema Central del Límite</h2>
+        </section>
+
+        <section>
+            <h3>Media muestral</h3>
+            \[
+            \bar X \sim N\left(\mu,\ \frac{\sigma}{\sqrt{n}}\right)
+            \]
+            <div class="tip">Si \(n\ge 30\), usar Normal aunque la distribución original no lo sea.</div>
+        </section>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- ====================== SECCIÓN 7: PROBLEMAS TIPO ==================== -->
+    <!-- ===================================================================== -->
+    <!-- ===================== INICIO: Bloque del parcial resuelto ===================== -->
+    <section>
+    <h2>Primer Parcial</h2>
+    <p>Resumen y tips</p>
+    </section>
+
+    <!-- EJ 1 -->
+    <section>
+    <section>
+        <h3>Ejercicio 1 - Enunciado</h3>
+        <p>Se ha determinado que, entre todas las personas que invierten en la bolsa:</p>
+        <ul>
+        <li>P(A) = 0.24 (invierte en A)</li>
+        <li>P(B) = 0.20 (invierte en B)</li>
+        <li>P(A ∩ B) = 0.04</li>
+        </ul>
+        <p>a) ¿Influye A sobre B?  &nbsp; b) P(A ∪ B) &nbsp; c) Si n=10, probabilidad de menos de la mitad invierta en alguno</p>
+    </section>
+
+    <section>
+        <h3>Ejercicio 1 - Solución (a,b)</h3>
+        <p><strong>a)</strong> Lo que nos pide es ver si son independientes</p>
+        <p>Entonces comparamos \(P(A∩B)=0.04\) con \(P(A)P(B)=0.24\cdot0.20=0.048\) \(\rightarrow\) no son iguales \(\rightarrow\) <em>no son independientes</em>.</p>
+
+        <div class="fragment">
+        <p><strong>b)</strong> Es importante notar que en el enunciado nos dice "Activo A o B" \(\rightarrow\) Unión</p>
+        <p>\(P(A \cup B)=0.24+0.20-0.04=0.40\) (40%)</p>
+        </div>
+    </section>
+
+    <section>
+        <h3>Ejercicio 1 - Solución (c)</h3>
+        <p>Definir \(X \sim Bin(n=10, p=0.4)\). Queremos \(P(X \le 4)\).</p>
+        <div class="fragment">
+        <p>\(P(X \le 4)=\sum_{k=0}^4 \binom{10}{k} 0.4^k 0.6^{10-k} \approx 0.6331\)</p>
+        </div>
+
+        <div class="tip fragment">
+        Tip: dibujar Venn primero, comprobar independencia con P(A∩B)=P(A)P(B), luego pasar a Binomial.
+        </div>
+    </section>
+    </section>
+
+    <!-- EJ 2 -->
+    <section>
+    <section>
+        <h3>Ejercicio 2 - Enunciado</h3>
+        <p>\(f(x) = 0.5 x − 1\), para \(2 \le x \le 4\) (densidad)</p>
+        <p>a) % de tornillos > 3.5 cm.  b) \(E(X)\) y \(\sigma\).  c) Caja de 50: P(\(\bar{X}\) ≤ 3.2)</p>
+    </section>
+
+    <section>
+        <h3>Ejercicio 2 - (a) Probabilidad</h3>
+        <p>\(P(X>3.5)=\int_{3.5}^4 (0.5x-1) dx = 0.4375 \rightarrow \textbf{43.75\%}\)</p>
+    </section>
+
+    <section>
+        <h3>Ejercicio 2 - (b) Esperanza y Varianza</h3>
+        <p>\(E(X)=\int x f(x) dx = \frac{10}{3} \approx 3.3333\)</p>
+        <p>\(E(X^2)=\frac{34}{3} \Rightarrow Var(X)=\frac{34}{3} - \left(\frac{10}{3}\right)^2 = \frac{2}{9} \\ \Rightarrow \sigma = \frac{\sqrt{2}}{3} \approx 0.4714\)</p>
+    </section>
+
+    <section>
+        <h3>Ejercicio 2 - (c) Media de caja (n=50)</h3>
+        <p>\(\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{50}} = \frac{1}{15} \approx 0.06667\) \\ \(z = \frac{3.2 - \frac{10}{3}}{\frac{1}{15}} = -2\).</p>
+        <p>\(P( \bar{x} \le 3.2 ) = \Phi(-2) \approx 0.02275\)</p>
+
+        <div class="tip fragment">Tip: aplicar TCL y recordar que \(\sigma_{\bar{x}}=\frac{\sigma}{\sqrt{n}}\).</div>
+    </section>
+    </section>
+
+    <!-- EJ 3 -->
+    <section>
+    <section>
+        <h3>Ejercicio 3 - Enunciado</h3>
+        <p>Tiempo entre llamadas: \(f(w) = 0.25 e^{-0.25 w} \quad w \ge 0\)</p>
+        <p>a) Han pasado 5 min sin 2ª llamada. Probabilidad de que tiempo total > 7 min?</p>
+        <p>b) Si el operador se ausenta 20 min, prob. de perder 3 o 4 llamadas?</p>
+    </section>
+
+    <section>
+        <h3>Ejercicio 3 - (a) Memoria</h3>
+        <p>\(P(W>7 | W>5) = P(W>2) \) (propiedad sin memoria) \(= e^{-0.25 \cdot 2} = e^{-0.5} \approx 0.6065\).</p>
+    </section>
+
+    <section>
+        <h3>Ejercicio 3 - (b) Poisson</h3>
+        <p>\(\lambda\) por minuto = 0.25 ⇒ en 20 min \(\lambda t = 5\)</p>
+        <p>\(N \sim P(5)\)</p>
+        <p>\(P(N=3)+P(N=4) \approx 0.14037 + 0.17547 = \textbf{0.31584}\)</p>
+    </section>
+    </section>
+
+    <!-- EJ 4 -->
+    <section>
+    <section>
+        <h3>Ejercicio 4 - Enunciado</h3>
+        <p>Alfajores: dulce de leche \(X \sim N(40,4)\ \sigma=2\) , fruta \(Y \sim N(42,6.25)\ \sigma=2.5\). Independientes.</p>
+        <ul>
+            <li>
+                a) \(P(Y > X)\)
+            </li>
+            <li>
+                b) ¿Cuál más probable que pese < 39.5 g?
+            </li>
+            <li>
+                c) Bayes con muestra 59/41.
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Ejercicio 4 - (a) \(P(Y > X)\)</h3>
+        <p>\(D=Y-X \sim N(2, 10.25)\). \(P(D>0)=\Phi\left(\frac{2}{\sqrt{10.25}}\right) \approx 0.7339144\)</p>
+    </section>
+
+    <section>
+        <h3>Ejercicio 4 - (b) Comparación</h3>
+        <p>\(P(X<39.5)=\Phi\left(\frac{39.5-40}{2}\right)=\Phi(-0.25)=0.40129\)</p>
+        <p>\(P(Y<39.5)=\Phi\left(\frac{39.5-42}{2.5}\right)=\Phi(-1)=0.15865\)</p>
+        <p>⇒ más probable en <strong>dulce de leche</strong>.</p>
+    </section>
+
+    <section>
+        <h3>Ejercicio 4 - (c) Bayes</h3>
+        <p>\(P(DL)=0.59, P(F)=0.41\).</p>
+        <p>\(P(DL | peso<39.5) = \frac{0.59 \cdot 0.4012937}{0.59 \cdot 0.4012937 + 0.41 \cdot 0.1586553} \approx \textbf{0.78447}\)</p>
+    </section>
+    </section>
+
+    <!-- REPASO: problemas extra -->
+    <section>
+    <h3>Repaso — Problemas tipo (resumen)</h3>
+    <ul>
+        <li>Tabla (X,Y): usar definiciones de prob condicional, marginales y test de independencia.</li>
+        <li>Normal, CLT: convertir a Z, usar cuantiles.</li>
+        <li>Poisson/Exponencial: relación entre procesos y tiempos entre eventos.</li>
+    </ul>
+    </section>
+    <!-- ===================== FIN: Bloque del parcial resuelto ===================== -->
+
+
+</div>
+</div>
+
+<script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+<script src="https://unpkg.com/reveal.js/plugin/markdown/markdown.js"></script>
+<script src="https://unpkg.com/reveal.js/plugin/highlight/highlight.js"></script>
+<script src="https://unpkg.com/reveal.js/plugin/math/math.js"></script>
+
+<script>
+    Reveal.initialize({
+        history: true,
+        transition: 'linear',
+
+        mathjax2: {
+            config: 'TeX-AMS_HTML-full',
+            TeX: {
+                Macros: {
+                    R: '\\mathbb{R}',
+                    set: ['\\left\\{#1 \\\\; ; \\\\; #2\\right\\}', 2]
+                }
+            }
+        },
+
+        plugins: [ RevealMarkdown, RevealMath.MathJax2 ]
+    });
+</script>
+</body>
+</html>
