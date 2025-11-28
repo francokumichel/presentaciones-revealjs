@@ -62,6 +62,7 @@
       </section>
 
       <!-- BLOQUE 2: Proceso de análisis con los datos -->
+      
       <!-- ==========================================================
           SECCIÓN: Preparación de los datos y análisis
       =========================================================== -->
@@ -481,26 +482,43 @@
         <ul>
           <li>Variables dependientes: Rx1day, PRCPTOT, CWD.</li>
           <li>Predictores: resto de los índices climáticos.</li>
-          <li>Multicolinealidad → mitigada mediante PCA.</li>
         </ul>
+        <p class="fragment">
+          <strong>Problemas:</strong> multicolinealidad entre predictores y muchos indices. ¿Como lo solucionamos?
+        </p>
       </section>
 
       <section>
-        <h3>¿Por qué emplear PCA?</h3>
-        ⭐ Ventajas
+        <section>
+          <h3>PCA</h3>
+          <p>
+            Para reducir la dimensionalidad y mitigar la multicolinealidad, aplicamos Análisis de Componentes Principales (PCA) a los predictores siguiendo los siguientes pasos:
+          </p>
+          <p>
+            Esto con la idea de transformar las variables originales en un conjunto reducido de nuevas variables no correlacionadas, llamadas componentes principales, que capturan la mayor parte de la variabilidad presente en los datos.
+          </p>
+        </section>
+        <section>
+          <h3>PCA</h3>
+          <p>
+            Entonces, al utilizar PCA cada componente principal se obtiene por combinacion lineal de las variables originales. Supongamos como ejemplo que aplicamos PCA al conjunto de indices R10mm, R95pTOT y Rx5day. Los componentes principales se obtendrian como:
+          </p>
+          <div class="fragment">
+            \[
+            PC = a_{11} \cdot R10mm + a_{12} \cdot R95pTOT + a_{13} \cdot Rx5day
+            \]
+            Donde los terminos \(a_{ij}\) reciben el nombre de loadings y son los que definen las componentes. Pueden interpretarse como el peso/importancia que tiene cada variable en cada componente y, por lo tanto, ayudan a conocer que tipo de información recoge cada una de las componentes. 
+        </section>
+      </section>
+      <section>
+        <h3>Modelo final</h3>
+        <p>Tenemos una solución a los problemas de multicolinealidad y dimensionalidad, pero surgen otras dudas:</p>
         <ul>
-          <li>Transforma los predictores en componentes principales no correlacionados.</li>
-          <li>Reduce la multicolinealidad y mejora la robustez del modelo.</li>
-          <li>Permite identificar patrones conjuntos de variabilidad.</li>
-        </ul>
-
-        ⭐ Resultados
-        <ul>
-          <li>Cada modelo se ajustó con las combinaciones de componentes que maximizan la explicación.</li>
-          <li>Se obtuvieron modelos explicativos fuertes para eventos de intensidad.</li>
+          <li>¿Cuántos componentes principales incluimos en el modelo?</li>
+          <li>¿Qué índices seleccionamos como variables dependientes?</li>
+          <li>¿Como nos aseguramos de seleccionar el modelo adecuado?</li>
         </ul>
       </section>
-
       <section>
         <h3>Proceso aplicado</h3>
         <ol>
